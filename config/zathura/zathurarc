@@ -1,0 +1,12 @@
+# Open document in fit-width mode by default
+set adjust-open "width"
+# One page per row by default
+set pages-per-row 1
+# Appearance
+set default-bg "#282828"
+set default-fg "#ffffff"
+set inputbar-bg "#282828"
+set inputbar-fg "#ffffff"
+set statusbar-bg "#282828"
+set statusbar-fg "#ffffff"
+set font "lime 9"

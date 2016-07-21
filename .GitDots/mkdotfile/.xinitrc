@@ -1,1 +1,0 @@
-/home/ismail/.dotfiles/dotfiles/.xinitrc

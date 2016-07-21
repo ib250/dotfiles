@@ -1,0 +1,38 @@
+#! /bin/sh
+[ -e $HOME/.local/bspwm.log ] && rm $HOME/.local/bspwm.log 
+{
+	source ~/.bash_aliases
+	# Screen Padding
+	bspc config top_padding			4
+	bspc config left_padding		  4
+	bspc config right_padding		 4
+	bspc config bottom_padding		4
+	# Gaps and such:
+	bspc config border_width	 2
+	bspc config window_gap		8
+	bspc config split_ratio			0.50
+	bspc config borderless_monocle  false
+	bspc config gapless_monocle	  false
+	bspc config focus_follows_pointer true
+	bspc config pointer_follows_focus true
+	# output colours:
+	BG=$(xrdb -query | grep " *background" | awk '{print $NF}')
+	FG=$(xrdb -query | grep " *color15" | awk '{print $NF}')
+	bspc config normal_border_color $BG
+	bspc config focused_border_color $FG
+	bspc config active_border_color $FG
+	# monitors
+	bspc monitor eDP1 -d 'I' 'II' 'III' 'IV' 'V'
+	# set up second monitor if connected
+	( xrandr --query | grep "HDMI1 d" ) 1> /dev/null || {
+	xrandr --output HDMI1 --auto --below eDP1
+	bspc monitor HDMI1 -d 'I'
+	}
+	# some rules:
+	bspc rule -a "Gimp" desktop="^4" state=floating follow=on
+	bspc rule -a "qutebrowser" desktop="^2" follow=on
+	bspc rule -a "Firefox" desktop="^2" follow=on
+	bspc rule -a "Zathura" desktop="^3" state=tiled follow=on
+	setblurredwall
+	lemtoggle.sh start
+} 2> $HOME/.local/bspwm.log 
