@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# some globally accesible variables
+barlog="$HOME/.local/lemonbarlog"
+fifofile="$HOME/.local/dzenfifo"
 # Functions for all
 getwifiname() {
 	Tico=" "
@@ -8,29 +11,54 @@ getwifiname() {
 		| awk '{print $NF}' | \
 		sed -e  "s/://g; s/ESSID//g; s/\"//g")
 	# output to stdin
-	echo "${Tico}${T} "
+	echo -e "${Tico}${T} "
 }
 getdatevalue() {
+	Tico=" "
 	# date value
-	echo "X1$(date) << DATE"
+	echo -e "${Tico}$(date '+%Y-%m-%d %H:%M')"
 }
 getbatteryinfo() {
 	BAT="/sys/class/power_supply/BAT0"
 	capacity=$(cat "${BAT}/capacity")
 	status=$(cat "${BAT}/status")
+	# icons
+	Tico=" "
+	[ "$status"="Discharging" ] && {
+	case $capacity in
+		[0-9])
+			Tico=" "
+			;;
+		[1-2]*)
+			Tico=" "
+			;;
+		[3-6]*)
+			Tico=" "
+			;;
+		[7-9]*)
+			Tico=" "
+			;;
+		[100])
+			Tico=" "
+			;;
+	esac
+	}
 	# spit out info
-	echo "X1${capacity} ${status} << BAT"
+	echo -e "${Tico}${capacity}% "
 }
 getvolumeinfo() {
-	aout=$(amixer --quiet sget Master)
-	state=$(echo $aout | grep -P 'Front Right:' | grep -Po 'off')
-	perc=$(echo $aout | grep -P 'Front Right:' | grep -Po '\d{2,3}\%')
-	if [ -n "$state" ]
-	then
-		 echo ""
-	else
-		 echo " $perc"
-	fi
+	#aout=$(amixer get Master)
+	#state=$(echo $aout | grep -P 'Front Right:' | grep -Po 'off')
+	#perc=$(echo $aout | grep -P 'Front Right:' | grep -Po '\d{2,3}\%')
+	##if [ -n "$state" ]
+	##then
+		 ##echo ""
+	##else
+		 #echo " $perc $state"
+	##fi
+	#pulseaudio --start && {
+	echo " $(amixer get Master | sed -n 'N;s/^.*\[\([0-9]\+%\).*$/\1/p') "
+	#}
 }
 getworkspaces() {
 	blackmagic() {
@@ -68,3 +96,7 @@ getworkspaces() {
 	done
 	echo "$yabarstat"
 }
+printinfo() { 
+	echo "$(getwifiname) $(getvolumeinfo) $(getbatteryinfo) $(getdatevalue)" | sed -e "s/$//g"
+} 
+printinfo 2> /dev/null

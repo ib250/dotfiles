@@ -1,0 +1,20 @@
+#!/bin/sh
+# Figure out current screen size
+SCREENWIDTH=1920
+SCREENHEIGHT=1080
+
+# How close to the screen edges do we begin/end?
+EDGEWIDTH=700
+DMENUWIDTH=500
+
+# dmenu X/Y coordinates
+XPOS=$EDGEWIDTH
+YPOS=$(($SCREENHEIGHT / 2))
+
+BGSELECT="#458588"
+FGSELECT="#8C9440"
+FG="#ebdbb2"
+BG="#282828"
+FONT="xft:monospace:size=14:antialiasing=true"
+
+dmenu_run -h 30 -l 5 -w $DMENUWIDTH -x $XPOS -y $YPOS -nb $BG -nf $FG -sb $BGSELECT
