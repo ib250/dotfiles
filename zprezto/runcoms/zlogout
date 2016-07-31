@@ -1,0 +1,12 @@
+#
+# Executes commands at logout.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#	 Ismail Bello
+#
+
+# Print the message.
+cat <<-EOF
+	See you soon Boss
+EOF
