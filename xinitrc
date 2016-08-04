@@ -34,5 +34,6 @@ initBspwm() {
 	# wm
 		exec bspwm -c $HOME/.config/bspwm/bspwmrc
 }
+# start bspwm
 initDesktop
 initBspwm
