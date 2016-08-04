@@ -24,15 +24,16 @@
 	# monitors
 	bspc monitor eDP1 -d 'I' 'II' 'III' 'IV' 'V'
 	# set up second monitor if connected
-	( xrandr --query | grep "HDMI1 d" ) 1> /dev/null || {
-	xrandr --output HDMI1 --auto --below eDP1
-	bspc monitor HDMI1 -d 'I'
-	}
+	#( xrandr --query | grep "HDMI1 d" ) 1> /dev/null || {
+	#xrandr --output HDMI1 --auto --below eDP1
+	#bspc monitor HDMI1 -d 'I'
+	#}
 	# some rules:
 	bspc rule -a "Gimp" desktop="^4" state=floating follow=on
 	bspc rule -a "qutebrowser" desktop="^2" follow=on
 	bspc rule -a "Firefox" desktop="^2" follow=on
 	bspc rule -a "Zathura" desktop="^3" state=tiled follow=on
+	#bspc config external_rules_command "$(which autoblur.sh)"
 	setblurredwall
 	lemtoggle.sh start
 } 2> $HOME/.local/bspwm.log 

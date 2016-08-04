@@ -30,5 +30,5 @@ ARROW=$'\u2263'
 me='$' #$USER
 PS1="${CME}$me${RST} \W ${CME}$ARROW${RST}\n"
 
-# some personal aliases 
+# some personal aliases
 source /home/ismail/.bash_aliases

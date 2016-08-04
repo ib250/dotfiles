@@ -1,7 +1,5 @@
 # Aliases
-
 alias climatlab='matlab -nosplash -nodesktop'
-#alias v='vimpager'
 alias r='ranger'
 alias c='clear'
 alias l='ls -lAs --color=always'
@@ -23,16 +21,15 @@ alias q='exit'
 alias rezsh='source $HOME/.zshrc'
 alias tty-clock='tty-clock -b'
 alias unixporn='rtv -s /r/unixporn'
+alias wslurn='slurm -i wlp8s0'
 
-# some possible useless functions
-# function for bootable stuff i always forget
+# some possibly useless functions
 function ddboot() {
+	# reminder for bootable stuff
 	echo "dd bs=\$\3 if=\$\1 of=\$\2 status=progress && sync"
 }
-# music
 function fucktheskullofitunes() {
 	mpd & MPD-PID=$!
-	export MPD-PID
 	ncmpcpp 
 }
 # not much use now that i've got locate but...
@@ -56,7 +53,6 @@ function setblurredwall() {
 function showwall() {
 	feh $(tail -n 1 ~/.fehbg | awk '{print $NF}' | sed -e "s/'//g")
 }
-# colorblocks courtesy of linuxbbq
 function colorblocks() {
     #NAMES="█████"
 	 NAMES=">>"
@@ -69,23 +65,23 @@ function colorblocks() {
     done
     echo -e "$rst\n"
 }
-# got too used to v for vim
+# got too used to v alias for vim
 function vimw() {
 	[[ $# -lt 1 ]] && vim 2> /dev/null || \
 		vimpager $@
 }
 alias v='vimw'
-# for checking fonts when i'm tweaking
+# something to see how fonts behave on term
 function somechars() {
 	echo "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG\nthe quick brown fox jumps over the lazy dog\n1234567890\n!\"£$%^&*():{}@~<>?,.¬\`|\\\?/=-+_\n"
 }
-# dump list of packages for emergency purposes
+# dump a list of packages
 function pacmanEmList() {
 	packages="$HOME/packageList"
 	[ -e "${packages}" ] && rm ${packages}
 	pacman --query > ${packages}
 }
-# In the works but does what i need for now
+# simple function to connect and disconnect HDMI
 function connectHDMI() {
 	case $1 in
 		+ )
@@ -96,5 +92,11 @@ function connectHDMI() {
 			xrandr --output HDMI1 --off
 			export mymonitor="eDP1"
 	esac
-			sh $HOME/.fehbg
+	feh  --image-bg black --bg-center '/home/ismail/Pictures/wallhaven-399689.png'
+}
+# dump the blurred wall
+function blurdump() {
+	#blur
+	[ -e $HOME/.blur.png ] && rm $HOME/.blur.png
+	hsetroot -fill $(tail -n 1 ~/.fehbg | awk '{print $NF}' | sed -e "s/'//g") -blur 20 -write "$HOME/.blur.png"
 }

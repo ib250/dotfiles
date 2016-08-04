@@ -20,6 +20,3 @@ export BROWSER='qutebrowser'
 
 ## add matlab
 #export MATLAB_JAVA=/usr/lib/jvm/java-7-openjdk/jre
-#
-## Editor variable
-#export EDITOR='vim'
