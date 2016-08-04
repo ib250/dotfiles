@@ -1,5 +1,4 @@
 " General Leader shortcuts {
-  let mapleader = ";"
   let g:mapleader = ";"
 "}
 " Package management (vundle) and plugins {
