@@ -59,7 +59,6 @@ URxvt*geometry: 65x20
 *background:   bg
 *foreground:   fg
 *cursorColor:  cyn
-
 *color0:      blk
 *color8:      bblk
 *color1:      red
