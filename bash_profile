@@ -17,11 +17,9 @@ export PANEL_FIFO PANEL_HEIGHT PANEL_FONT PANEL_WM_NAME mymonitor
 # add .local/bin and panel to path
 export PATH=$PATH:$HOME/.local/bin:$HOME/.config/bspwm/panel
 export BROWSER='qutebrowser'
+
 ## add matlab
 #export MATLAB_JAVA=/usr/lib/jvm/java-7-openjdk/jre
 #
 ## Editor variable
 #export EDITOR='vim'
-#
-## ZDOTDIR
-#export ZDOTDIR=$HOME

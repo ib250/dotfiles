@@ -1,4 +1,5 @@
 # Aliases
+
 alias climatlab='matlab -nosplash -nodesktop'
 #alias v='vimpager'
 alias r='ranger'
@@ -24,16 +25,14 @@ alias tty-clock='tty-clock -b'
 alias unixporn='rtv -s /r/unixporn'
 
 # some possible useless functions
-# function for bootable stuff
+# function for bootable stuff i always forget
 function ddboot() {
 	echo "dd bs=\$\3 if=\$\1 of=\$\2 status=progress && sync"
 }
-# zathura silent maurine issues
-function zpdf() {
-	zathura $@ 2> /dev/null && return 0 || return 1
-}
+# music
 function fucktheskullofitunes() {
 	mpd & MPD-PID=$!
+	export MPD-PID
 	ncmpcpp 
 }
 # not much use now that i've got locate but...
@@ -42,7 +41,6 @@ function doihave() {
 	[[ $# == 2 ]] &&	ls --all $1 | grep -i $2
 	# the one input case
 	[[ $# == 1 ]] && ls --all $(pwd) | grep -i $1
-	#return 0;
 }
 # set blurred wallpaper
 function setblurredwall() {
@@ -58,8 +56,10 @@ function setblurredwall() {
 function showwall() {
 	feh $(tail -n 1 ~/.fehbg | awk '{print $NF}' | sed -e "s/'//g")
 }
+# colorblocks courtesy of linuxbbq
 function colorblocks() {
-    NAMES="█████"
+    #NAMES="█████"
+	 NAMES=">>"
     for f in $(seq 0 7); do
         echo -en "\033[m\033[$(($f+30))m ${NAMES}" # normal colors
     done
@@ -69,19 +69,23 @@ function colorblocks() {
     done
     echo -e "$rst\n"
 }
+# got too used to v for vim
 function vimw() {
 	[[ $# -lt 1 ]] && vim 2> /dev/null || \
 		vimpager $@
 }
 alias v='vimw'
+# for checking fonts when i'm tweaking
 function somechars() {
 	echo "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG\nthe quick brown fox jumps over the lazy dog\n1234567890\n!\"£$%^&*():{}@~<>?,.¬\`|\\\?/=-+_\n"
 }
+# dump list of packages for emergency purposes
 function pacmanEmList() {
 	packages="$HOME/packageList"
 	[ -e "${packages}" ] && rm ${packages}
 	pacman --query > ${packages}
 }
+# In the works but does what i need for now
 function connectHDMI() {
 	case $1 in
 		+ )
