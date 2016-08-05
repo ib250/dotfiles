@@ -22,6 +22,7 @@ alias rezsh='source $HOME/.zshrc'
 alias tty-clock='tty-clock -b'
 alias unixporn='rtv -s /r/unixporn'
 alias wslurn='slurm -i wlp8s0'
+alias fehwall='feh  --image-bg black --bg-center '/home/ismail/Pictures/wallhaven-399689.png''
 
 # some possibly useless functions
 function ddboot() {
@@ -91,12 +92,20 @@ function connectHDMI() {
 		- )
 			xrandr --output HDMI1 --off
 			export mymonitor="eDP1"
+			;;
+		* )
+			echo "Invalid input use + to connect and - to disconnect"
+			;;
 	esac
-	feh  --image-bg black --bg-center '/home/ismail/Pictures/wallhaven-399689.png'
+	feh  --image-bg black --bg-center $HOME/.wall.png
 }
 # dump the blurred wall
 function blurdump() {
-	#blur
-	[ -e $HOME/.blur.png ] && rm $HOME/.blur.png
-	hsetroot -fill $(tail -n 1 ~/.fehbg | awk '{print $NF}' | sed -e "s/'//g") -blur 20 -write "$HOME/.blur.png"
+	# in and out
+	inputimg="$(tail -n 1 ~/.fehbg | awk '{print $NF}' | sed -e "s/'//g")"
+	outputimg="$HOME/.wall.png"
+	# target file
+	#[ -e ${outputimg} ] && rm ${outputimg}
+	# conversion:
+	convert -blur 15x15 ${inputimg} ${outputimg}
 }

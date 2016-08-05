@@ -33,7 +33,6 @@
 	bspc rule -a "qutebrowser" desktop="^2" follow=on
 	bspc rule -a "Firefox" desktop="^2" follow=on
 	bspc rule -a "Zathura" desktop="^3" state=tiled follow=on
-	#bspc config external_rules_command "$(which autoblur.sh)"
-	setblurredwall
+	feh  --image-bg black --bg-center $HOME/.wall.png
 	lemtoggle.sh start
 } 2> $HOME/.local/bspwm.log 
