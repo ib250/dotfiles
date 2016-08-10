@@ -1,0 +1,28 @@
+! heaven
+! bg fg blk bblk wht red grn ylw blu mag cyn
+
+#define bg #342F2F
+#define fg #C9A679
+#define bblk #262521
+#define blk #363132
+#define red #623E3A
+#define grn #749C6D
+#define ylw #79623C
+#define blu #473A41
+#define mag #4A3F40
+#define cyn #755E61
+#define wht #E9D9C3
+! heaven
+! bg fg blk bblk wht red grn ylw blu mag cyn
+
+#define abg #D9342F2F
+#define afg #D9C9A679
+#define abblk #D9262521
+#define ablk #D9363132
+#define ared #D9623E3A
+#define agrn #D9749C6D
+#define aylw #D979623C
+#define ablu #D9473A41
+#define amag #D94A3F40
+#define acyn #D9755E61
+#define awht #D9E9D9C3

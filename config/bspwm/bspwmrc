@@ -16,23 +16,32 @@
 	bspc config focus_follows_pointer true
 	bspc config pointer_follows_focus true
 	# output colours:
-	BG=$(xrdb -query | grep " *background" | awk '{print $NF}')
-	FG=$(xrdb -query | grep " *color15" | awk '{print $NF}')
-	bspc config normal_border_color $BG
-	bspc config focused_border_color $FG
-	bspc config active_border_color $FG
+	#export BG=$(xrdb -query | grep " *background" | awk '{print $NF}')
+	#export FG=$(xrdb -query | grep " *color3" | awk '{print $NF}')
+	bspc config normal_border_color $barBG
+	bspc config focused_border_color $barFG
+	bspc config active_border_color $barFG
 	# monitors
 	bspc monitor eDP1 -d 'I' 'II' 'III' 'IV' 'V'
-	# set up second monitor if connected
-	#( xrandr --query | grep "HDMI1 d" ) 1> /dev/null || {
-	#xrandr --output HDMI1 --auto --below eDP1
-	#bspc monitor HDMI1 -d 'I'
-	#}
 	# some rules:
 	bspc rule -a "Gimp" desktop="^4" state=floating follow=on
 	bspc rule -a "qutebrowser" desktop="^2" follow=on
 	bspc rule -a "Firefox" desktop="^2" follow=on
 	bspc rule -a "Zathura" desktop="^3" state=tiled follow=on
-	feh  --image-bg black --bg-center $HOME/.wall.png
+	just so i can do this
+	case $1 in
+		blur )
+				fehwall blur
+				;;
+		blend )
+				blend
+				;;
+		sharp )
+				fehwall sharp
+				;;
+			* )
+				blend
+				;;
+	esac
 	lemtoggle.sh start
 } 2> $HOME/.local/bspwm.log 

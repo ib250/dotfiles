@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# remove the old one
+[ -e "xuse" ] && rm xuse
+# copy target
+cat "$1" > xuse
+# sed change stuff to add transparency
+sed -e "s/define /define a/g; s/ #/ #D9/g;" $1 >> xuse
+# reload Xresources
+xrdb $HOME/.Xresources
+#export barBG=$(xrdb -query | grep "*background" | awk '{print $NF}')
+#export barFG=$(xrdb -query | grep "*foreground" | awk '{print $NF}')
+# reload bar
+#lemtoggle.sh stop && lemtoggle.sh start

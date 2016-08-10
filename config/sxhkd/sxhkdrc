@@ -16,8 +16,8 @@ F6
 
 
 # kill panel
-#super + alt + Escape
-	#lemtoggle stop  && bspc quit 2> /dev/null
+super + alt + Escape
+		  bspc quit
 
 #pkill -x yabar-shart.sh; pkill -x clipmenud; pkill -x redshift; pkill -x bspc-report.sh; bspc quit
 
@@ -31,9 +31,6 @@ super + shift + Return
 
 super + i
 	 qutebrowser 2> /dev/null
-
-super + I
-	 firefox 2> /dev/null
 
 # program launcher
 super + space
@@ -58,7 +55,7 @@ super + Escape
 
 # quit bspwm normally
 super + alt + Escape
-	lemtoggle.sh stop 2> /dev/null; bspc quit 2> /dev/null
+	lemtoggle.sh stop; bspc quit
 
 # close and kill
 super + {_,shift + }w
@@ -118,7 +115,7 @@ super + {_,shift + }{h,j,k,l}
 # focus the next/previous node
 #super + {_,shift + }c
 super + {comma,period}
-	bspc node -f {next,prev}.local
+	bspc node -f {next,prev}
 
 # focus the next/previous desktop
 super + bracket{left,right}
@@ -158,9 +155,6 @@ super + ctrl + space
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
-# receptacles
-super + {_,shift} + e
-	{bspc node -i,for win in `bspc query -N -n .leaf.!window`; do bspc node $win -k ; done;}
 #
 # resize tiled/floating
 #
@@ -183,11 +177,6 @@ super + alt + {Up,Down,Right,Left}
 
 super + {a,d}
 	wrs {2 2,-2 -2} $(pfw)
-
-# change gap sizes
-super {_,shift} g
-	squeezewin.sh {4,125}
-
 #
 # pointer focus/move/resize
 #
