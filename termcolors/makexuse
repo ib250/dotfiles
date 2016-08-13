@@ -8,7 +8,9 @@ cat "$1" > xuse
 sed -e "s/define /define a/g; s/ #/ #D9/g;" $1 >> xuse
 # reload Xresources
 xrdb $HOME/.Xresources
-#export barBG=$(xrdb -query | grep "*background" | awk '{print $NF}')
-#export barFG=$(xrdb -query | grep "*foreground" | awk '{print $NF}')
-# reload bar
+export barBG=$(xrdb -query | grep "*background" | awk '{print $NF}')
+export barFG=$(xrdb -query | grep "*foreground" | awk '{print $NF}')
+bspc config normal_border_color $barBG
+bspc config focused_border_color $barFG
+bspc config active_border_color $barFG
 #lemtoggle.sh stop && lemtoggle.sh start
