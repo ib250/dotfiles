@@ -63,7 +63,7 @@
   set hidden
   if has('gui_running')
     set guioptions-=T
-    set guifont=lime
+    set guifont=dweep\ Medium\ Semi-Condensed\ 9
     set lines=60 columns=108 linespace=0
   endif
   set number
@@ -360,3 +360,5 @@
   " calender view
   nnoremap <leader>CC :Calendar -view=year<CR>
 "}
+" sorry :(
+nnoremap <leader>p :emenu Edit.Paste<CR>

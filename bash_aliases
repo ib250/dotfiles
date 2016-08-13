@@ -3,7 +3,6 @@ alias climatlab='matlab -nosplash -nodesktop'
 alias r='ranger'
 alias c='clear'
 alias l='ls -lAs --color=always'
-alias ls='ls  --color=always'
 alias ll='ls -l --color=always'
 alias rmi='rm -iv'
 alias cpi='cp -iv'
@@ -18,20 +17,16 @@ alias quickLuaTex='latexmk -lualatex'
 alias quickPdfTex='latexmk -pdf'
 alias alsi='alsi -n'
 alias q='exit'
-alias rezsh='source $HOME/.zshrc'
+alias rezsh='rehash && source ~/.zshrc'
 alias tty-clock='tty-clock -b'
 alias unixporn='rtv -s /r/unixporn'
 alias wslurn='slurm -i wlp8s0'
-alias fehwall='feh  --image-bg black --bg-center '/home/ismail/Pictures/wallhaven-399689.png''
+alias fucktheskullofitunes='mpd && ncmpcpp'
 
 # some possibly useless functions
 function ddboot() {
 	# reminder for bootable stuff
 	echo "dd bs=\$\3 if=\$\1 of=\$\2 status=progress && sync"
-}
-function fucktheskullofitunes() {
-	mpd & MPD-PID=$!
-	ncmpcpp 
 }
 # not much use now that i've got locate but...
 function doihave() {
@@ -39,6 +34,20 @@ function doihave() {
 	[[ $# == 2 ]] &&	ls --all $1 | grep -i $2
 	# the one input case
 	[[ $# == 1 ]] && ls --all $(pwd) | grep -i $1
+}
+function fehwall() {
+	case $1 in
+		blur )
+			usethisone="$HOME/.wall.png"
+			;;
+		sharp )
+			usethisone="$HOME/.sharp.png"
+			;;
+		* )
+			usethisone="$HOME/.wall.png"
+			;;
+	esac
+	feh --bg-fill "${usethisone}"
 }
 # set blurred wallpaper
 function setblurredwall() {
@@ -55,8 +64,8 @@ function showwall() {
 	feh $(tail -n 1 ~/.fehbg | awk '{print $NF}' | sed -e "s/'//g")
 }
 function colorblocks() {
-    #NAMES="█████"
-	 NAMES=">>"
+	 NAMES="█████"
+	 #NAMES=">>"
     for f in $(seq 0 7); do
         echo -en "\033[m\033[$(($f+30))m ${NAMES}" # normal colors
     done
@@ -100,12 +109,15 @@ function connectHDMI() {
 	feh  --image-bg black --bg-center $HOME/.wall.png
 }
 # dump the blurred wall
-function blurdump() {
+function walldump() {
 	# in and out
 	inputimg="$(tail -n 1 ~/.fehbg | awk '{print $NF}' | sed -e "s/'//g")"
 	outputimg="$HOME/.wall.png"
-	# target file
-	#[ -e ${outputimg} ] && rm ${outputimg}
 	# conversion:
-	convert -blur 15x15 ${inputimg} ${outputimg}
+	[[ $1 = all ]] && convert -blur 50x50 ${inputimg} ${outputimg}
+	# symlink orginal
+	ln -s "${inputimg}" "$HOME/.sharp.png"
+}
+function blend() {
+	hsetroot -solid "$(xrdb -query | grep "*background" | awk '{print $NF}')"
 }

@@ -13,9 +13,9 @@ URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
 URxvt.url-select.launcher:  qutebrowser
 URxvt.url-select.underline: true
 !! The font debarcle
-*font: xft:lime.se:pixelsize=13,style=regular:antialias=True:foundry=artwiz:outline=True,\
+*font: xft:dweep:pixelsize=9,style=regular:antialias=True:outline=True
 URxvt.font: \
-    xft:lime:size=9,style=regular:antialias=True:foundry=artwiz:outline=True,\
+    xft:dweep:size=9,style=regular:antialias=True:outline=True,\
     xft:Terminal:pixelsize=10:antialias=True,\
     xft:Inconsolata for Powerline:pixelsize=16,\
 	 xft:InconsolataForPowerline Nerd Font:pixelsize=16\
@@ -35,11 +35,10 @@ URxvt.clipboard.autocopy: true
 URxvt.tabbed.new-button:    no
 xft.dpi: 109
 ! TERMINAL COLOURS
-URxvt.background: [97]bg
+URxvt.background: [95]bg
 ! ! Geometry !!
 URxvt*geometry: 65x20
 ! }}}
-! ------------------------------------------------------------------------------
 ! ! rofi Color theme
 ! ------------------------------------------------------------------------------
 ! Use extended color scheme
@@ -58,7 +57,7 @@ URxvt*geometry: 65x20
 ! Colors
 *background:   bg
 *foreground:   fg
-*cursorColor:  cyn
+*cursorColor:  ylw
 
 *color0:      blk
 *color8:      bblk

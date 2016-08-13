@@ -28,20 +28,5 @@
 	bspc rule -a "qutebrowser" desktop="^2" follow=on
 	bspc rule -a "Firefox" desktop="^2" follow=on
 	bspc rule -a "Zathura" desktop="^3" state=tiled follow=on
-	just so i can do this
-	case $1 in
-		blur )
-				fehwall blur
-				;;
-		blend )
-				blend
-				;;
-		sharp )
-				fehwall sharp
-				;;
-			* )
-				blend
-				;;
-	esac
 	lemtoggle.sh start
 } 2> $HOME/.local/bspwm.log 

@@ -14,7 +14,7 @@ initDesktop() {
 		export barFG=$(xrdb -query | grep "*foreground" | awk '{print $NF}')
 		pulseaudio --start
 	# Mittigate vims stupidity with external clipboard
-		( pidof clipmenud ) && pkill clipmenud; clipmenud || clipmenud &
+		keratin -d
 	# speed up key repeat rate
 		xset r rate 370 150
 	# urxvt daemon
@@ -31,9 +31,16 @@ initBspwm() {
 		sxhkd -c $HOME/.config/sxhkd/sxhkdrc.bsp-git &2> $HOME/.local/sxhkd.log
 	# java fix
 		wmname LG3D
+	# wall
+		case $1 in
+			blend ) blend ;;
+			blur ) fehwall blur ;;
+			sharp ) fehwall sharp ;;
+			* ) blend ;;
+		esac
 	# wm
 		exec bspwm -c $HOME/.config/bspwm/bspwmrc
 }
 # start bspwm
 initDesktop
-initBspwm
+initBspwm $@

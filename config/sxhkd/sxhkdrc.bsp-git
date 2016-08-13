@@ -19,8 +19,6 @@ F6
 #super + alt + Escape
 	#lemtoggle stop  && bspc quit 2> /dev/null
 
-#pkill -x yabar-shart.sh; pkill -x clipmenud; pkill -x redshift; pkill -x bspc-report.sh; bspc quit
-
 # terminal emulator with zsh normally
 super + Return
 	urxvtc 
@@ -37,7 +35,7 @@ super + I
 
 # program launcher
 super + space
-    rofi -terminal urxvtc -font 'lime 8' -modi "window,run,ssh,files:rofi-file-browser.sh" -show run
+    rofi -terminal urxvtc -font 'dweep 8' -modi "window,run,ssh,files:rofi-file-browser.sh" -show run
 
 super + shift + space
 	lemtoggle.sh 2> /dev/null
@@ -46,7 +44,7 @@ super + shift + space
     #rofi -terminal urxvtc -font 'Terminal 9' -show window
 
 super + S
-	myclipmenu 2> /dev/null
+	keratin -fn "dweep" -nf $barFG -nb $barBG -sf $barBG -sb $barFG
 
 # make sxhkd reload its configuration files:
 super + Escape
