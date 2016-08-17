@@ -13,13 +13,14 @@ URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
 URxvt.url-select.launcher:  qutebrowser
 URxvt.url-select.underline: true
 !! The font debarcle
-*font: xft:dweep:pixelsize=9,style=regular:antialias=True:outline=True
+*font: xft:dweep:pixelsize=9,style=regular:antialias=False:outline=False
 URxvt.font: \
-    xft:dweep:size=9,style=regular:antialias=True:outline=True,\
+    xft:dweep:size=9,style=regular:antialias=False:outline=False,\
     xft:Terminal:pixelsize=10:antialias=True,\
     xft:Inconsolata for Powerline:pixelsize=16,\
 	 xft:InconsolataForPowerline Nerd Font:pixelsize=16\
 URxvt.letterSpace: -2
+!URxvt.boldFont:
 ! terminal padding
 URxvt.internalBorder:   10
 !xpdf settings

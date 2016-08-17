@@ -13,4 +13,7 @@ export barFG=$(xrdb -query | grep "*foreground" | awk '{print $NF}')
 bspc config normal_border_color $barBG
 bspc config focused_border_color $barFG
 bspc config active_border_color $barFG
+#export barBG=$(xrdb -query | grep "*background" | awk '{print $NF}')
+#export barFG=$(xrdb -query | grep "*foreground" | awk '{print $NF}')
+# reload bar
 #lemtoggle.sh stop && lemtoggle.sh start

@@ -1,8 +1,8 @@
-! float
+! float v2
 ! bg fg blk bblk wht red grn ylw blu mag cyn
 
 #define bg #534F57
-#define fg #C4D1BE
+#define fg #81716E
 #define bblk #1B1B2E
 #define blk #292838
 #define red #632121

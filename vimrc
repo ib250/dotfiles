@@ -149,7 +149,7 @@
   let g:airline_symbols.branch = ''
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
-  let g:airline_theme = 'term'
+  let g:airline_theme = 'base16'
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#whitespace#enabled = 0
   set noshowmode

@@ -43,4 +43,4 @@ initBspwm() {
 }
 # start bspwm
 initDesktop
-initBspwm $@
+initBspwm "$@"

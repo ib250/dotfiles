@@ -36,6 +36,7 @@ function doihave() {
 	[[ $# == 1 ]] && ls --all $(pwd) | grep -i $1
 }
 function fehwall() {
+	comptontoggle start
 	case $1 in
 		blur )
 			usethisone="$HOME/.wall.png"
@@ -118,6 +119,30 @@ function walldump() {
 	# symlink orginal
 	ln -s "${inputimg}" "$HOME/.sharp.png"
 }
+function comptontoggle() {
+	case $1 in
+		start ) ( pgrep compton ) || compton & ;;
+		stop ) ( pgrep compton ) && pkill compton ;;
+		* ) ( pgrep compton ) && pkill compton || compton &> /dev/null ;;
+	esac
+}
 function blend() {
-	hsetroot -solid "$(xrdb -query | grep "*background" | awk '{print $NF}')"
+	thebg="$(xrdb -query | grep "*background" | awk '{print $NF}')"
+	thefg="$(xrdb -query | grep "*foreground" | awk '{print $NF}')"
+	case $1 in
+		tile ) 
+			comptontoggle stop
+			xsetroot -bitmap "$HOME/.local/bin/bitmaps/tile.xbm"  -bg "${thebg}" -fg "${thefg}"
+			;;
+		* )
+			comptontoggle start
+			hsetroot -solid  "${thebg}"
+			;;
+	esac
+}
+function startmatlab() {
+	# found that some java annoyances persist without this
+	bspc desktop -l monocle && {
+	wmname LG3D && export _JAVA_AWT_WM_NONREPARENTING=1 && matlab "$@"
+	}
 }

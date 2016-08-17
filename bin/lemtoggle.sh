@@ -2,12 +2,14 @@
 
 # start
 function lemstart() {
-	bspc config -m eDP1 top_padding 25
+	currentpadding="$(bspc config -m eDP1 top_padding)"
+	bspc config -m eDP1 top_padding $((${currentpadding}+18))
 	lemonbuddy_wrapper top
 }
 # stop
 function lemstop() {
-	lemonbuddy_terminate noconfirm && bspc config -m eDP1 top_padding 4
+	currentpadding="$(bspc config -m eDP1 top_padding)"
+	lemonbuddy_terminate noconfirm && bspc config -m eDP1 top_padding $((${currentpadding}-18))
 }
 
 # zero input case just toggle start stop
