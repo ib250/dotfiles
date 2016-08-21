@@ -13,14 +13,14 @@ initDesktop() {
 		export barBG=$(xrdb -query | grep "*background" | awk '{print $NF}')
 		export barFG=$(xrdb -query | grep "*foreground" | awk '{print $NF}')
 		pulseaudio --start
+	# mpd
+		mpd &
 	# Mittigate vims stupidity with external clipboard
 		keratin -d
 	# speed up key repeat rate
 		xset r rate 370 150
 	# urxvt daemon
 		urxvtd -q -f -o & 
-	# compton
-		compton &
 	# hide mouse
 		unclutter -idle 2 &
 }
@@ -34,9 +34,9 @@ initBspwm() {
 	# wall
 		case $1 in
 			blend ) blend ;;
-			blur ) fehwall blur ;;
-			sharp ) fehwall sharp ;;
-			* ) blend ;;
+			blur ) comptontoggle start && fehwall blur ;;
+			sharp ) comptontoggle start && fehwall sharp ;;
+			* ) blend tile ;;
 		esac
 	# wm
 		exec bspwm -c $HOME/.config/bspwm/bspwmrc

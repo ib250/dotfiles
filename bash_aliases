@@ -107,7 +107,8 @@ function connectHDMI() {
 			echo "Invalid input use + to connect and - to disconnect"
 			;;
 	esac
-	feh  --image-bg black --bg-center $HOME/.wall.png
+	blend tile
+	#feh  --image-bg black --bg-center $HOME/.wall.png
 }
 # dump the blurred wall
 function walldump() {
@@ -120,22 +121,26 @@ function walldump() {
 	ln -s "${inputimg}" "$HOME/.sharp.png"
 }
 function comptontoggle() {
-	case $1 in
-		start ) ( pgrep compton ) || compton & ;;
-		stop ) ( pgrep compton ) && pkill compton ;;
-		* ) ( pgrep compton ) && pkill compton || compton &> /dev/null ;;
-	esac
+		case $1 in
+			start ) ( pgrep compton ) || compton &> /dev/null ;;
+			stop ) ( pgrep compton ) && pkill compton &> /dev/null ;;
+			* ) ( pgrep compton ) && pkill compton || compton &> /dev/null ;;
+		esac
 }
 function blend() {
 	thebg="$(xrdb -query | grep "*background" | awk '{print $NF}')"
-	thefg="$(xrdb -query | grep "*foreground" | awk '{print $NF}')"
+	thefg="$(xrdb -query | grep "*color0" | awk '{print $NF}')"
 	case $1 in
 		tile ) 
-			comptontoggle stop
-			xsetroot -bitmap "$HOME/.local/bin/bitmaps/tile.xbm"  -bg "${thebg}" -fg "${thefg}"
+			comptontoggle stop &> /dev/null
+			xsetroot -bitmap "/home/ismail/.local/share/tiles/xbms/ammannTilingEdges.xbm"  -bg "${thebg}" -fg "${thefg}"
 			;;
+		#tile+ ) 
+			#comptontoggle start
+			#hsetroot -tile "/home/ismail/.local/share/tiles/pngs/tile.png"  -bg "${thebg}" -fg "${thefg}"
+			#;;
 		* )
-			comptontoggle start
+			comptontoggle start &>/dev/null
 			hsetroot -solid  "${thebg}"
 			;;
 	esac
@@ -145,4 +150,28 @@ function startmatlab() {
 	bspc desktop -l monocle && {
 	wmname LG3D && export _JAVA_AWT_WM_NONREPARENTING=1 && matlab "$@"
 	}
+}
+function makecolors() {
+	printheader() {
+		echo "! $@ \n! bg fg blk bblk wht red grn ylw blu mag cyn"
+	}
+	makeandlink() {
+		pathprefix="/home/ismail/.termcolors/ib250/${1}"
+		printheader ${1} > ${pathprefix}
+		ln -s ${pathprefix} $HOME/.termcolors/.
+	}
+	[ $# -eq 0 ] && echo "Must specify filename" || {
+		for i in "$@" ; do
+			makeandlink ${i}
+		done
+	}
+}
+function mypdflatex() {
+	pdflatex -syntex=1 -interaction=nonstopmode "$(find . -name "*.tex")"
+}
+function mylualatex() {
+	lualatex -syntex=1 -interaction=nonstopmode "$(find . -name "*.tex")"
+}
+function mybibtex() {
+	bibtex "$(find . -name "*.aux")"
 }

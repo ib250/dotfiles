@@ -1,0 +1,14 @@
+! lights
+! bg fg blk bblk wht red grn ylw blu mag cyn
+
+#define bg #031C29
+#define fg #F8F3DE
+#define blk #475255
+#define bblk #211D1C
+#define wht #E9DB9B
+#define red #D9AF64
+#define grn #778E89
+#define ylw #F2B64A
+#define blu #4A87F2
+#define mag #8C775D
+#define cyn #1B2833

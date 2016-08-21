@@ -36,7 +36,7 @@ URxvt.clipboard.autocopy: true
 URxvt.tabbed.new-button:    no
 xft.dpi: 109
 ! TERMINAL COLOURS
-URxvt.background: [95]bg
+URxvt.background: bg
 ! ! Geometry !!
 URxvt*geometry: 65x20
 ! }}}

@@ -51,7 +51,7 @@
   let &t_AB="\e[48;5;%dm"
   let &t_AF="\e[38;5;%dm"
   syntax on
-  colorscheme desert
+  colorscheme default
   set background=dark
   " working directory always where the active buffer is located
   set autochdir

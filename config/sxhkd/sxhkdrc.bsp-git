@@ -24,8 +24,8 @@ super + Return
 	urxvtc 
 
 # terminal emulator in bash
-super + shift + Return
-	gurxvt.sh
+super + {shift,alt} + Return
+	gurxvt.sh {pullup,center}
 
 super + i
 	 qutebrowser 2> /dev/null
@@ -38,7 +38,7 @@ super + space
     rofi -terminal urxvtc -font 'dweep 8' -modi "window,run,ssh,files:rofi-file-browser.sh" -show run
 
 super + shift + space
-	lemtoggle.sh 2> /dev/null
+	lemtoggle.sh toggle
 
 #super + shift + Tab
     #rofi -terminal urxvtc -font 'Terminal 9' -show window
@@ -161,7 +161,7 @@ super + ctrl + shift + space
 
 # receptacles
 super + {_,shift} + e
-	{bspc node -i,for win in `bspc query -N -n .leaf.!window`; do bspc node $win -k ; done;}
+	{bspc node -i,for win in `bspc query -N -n .leaf.!window -d focused`; do bspc node $win -k ; done;}
 #
 # resize tiled/floating
 #
