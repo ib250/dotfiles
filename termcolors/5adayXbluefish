@@ -1,8 +1,8 @@
-! 5aday 
+! 5adayXbluefish 
 ! bg fg blk bblk wht red grn ylw blu mag cyn
 
-#define fg #8A7E7A
-#define bg #464646
+#define bg #282828
+#define fg #E0E0E0
 #define blk #675E5B
 #define bblk #2B3A47
 #define mag #9E9FA4
