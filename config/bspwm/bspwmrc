@@ -2,36 +2,34 @@
 [ -e $HOME/.local/bspwm.log ] && rm $HOME/.local/bspwm.log 
 {
 	source ~/.bash_aliases
-	# Screen Padding
-	bspc config top_padding			4
-	bspc config left_padding		  4
-	bspc config right_padding		 4
-	bspc config bottom_padding		4
 	# Gaps and such:
 	bspc config border_width	 2
 	bspc config window_gap		8
 	bspc config split_ratio			0.50
 	bspc config borderless_monocle  true
-	bspc config gapless_monocle	  true
+	bspc config gapless_monocle	  false
 	bspc config borderless_monacle true
 	bspc config focus_follows_pointer true
 	bspc config pointer_follows_focus true
 	bspc config pointer_follows_monitor true
 	# output colours:
-	#export BG=$(xrdb -query | grep " *background" | awk '{print $NF}')
-	#export FG=$(xrdb -query | grep " *color3" | awk '{print $NF}')
 	bspc config normal_border_color $barBG
 	bspc config focused_border_color $barFG
 	bspc config active_border_color $barFG
 	# monitors
 	bspc monitor eDP1 -d 'I' 'II' 'III' 'IV' 'V'
-	# some rules:
+	# some rules:{
 	#Gimp{ single window mode so i can tile
 		bspc rule -a "Gimp" desktop="^4"
-		bspc config -d "^4" pointer_follows_focus false
+		#bspc config -d "^4" pointer_follows_focus false
 	#}
-	bspc rule -a "qutebrowser" desktop="^2" follow=on
-	bspc rule -a "Firefox" desktop="^2" follow=on
-	bspc rule -a "Zathura" desktop="^3" state=tiled follow=on
-	lemtoggle.sh start
+		bspc rule -a "qutebrowser" desktop="^2" follow=on
+		bspc rule -a "Firefox" desktop="^2" follow=on
+		bspc rule -a "Zathura" desktop="^3" state=tiled follow=on
+		bspc rule -a "URxvtQuake" state=floating sticky=on
+		bspc rule -a "URxvtRun" state=floating sticky=on
+		bspc rule -a "Butter" desktop="^1" follow=on
+	#}
+	# bar & rectify padding
+	lemtoggle.sh start && squeezewin.sh 2
 } 2> $HOME/.local/bspwm.log 

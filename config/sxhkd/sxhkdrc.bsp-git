@@ -187,7 +187,7 @@ super + {a,d}
 
 # change gap sizes
 super {_,shift} g
-	squeezewin.sh {-20,+20}
+	squeezewin.sh {-10,+10}
 
 #
 # pointer focus/move/resize

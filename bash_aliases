@@ -22,6 +22,7 @@ alias tty-clock='tty-clock -b'
 alias unixporn='rtv -s /r/unixporn'
 alias wslurn='slurm -i wlp8s0'
 alias fucktheskullofitunes='mpd && ncmpcpp'
+alias whichxuse='head -n2 $HOME/.termcolors/xuse && colorblocks'
 
 # some possibly useless functions
 function ddboot() {

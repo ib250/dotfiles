@@ -22,7 +22,7 @@ initDesktop() {
 	# urxvt daemon
 		urxvtd -q -f -o & 
 	# hide mouse
-		unclutter -idle 2 &
+		unclutter -idle 1 &
 }
 initBspwm() {
 	# remove text file if it exists

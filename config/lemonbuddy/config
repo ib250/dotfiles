@@ -1,5 +1,4 @@
 ; This config uses the new syntax (which isn't merged upstream)
-
 ; [settings]
 ; throttle_ms = 50
 ; throttle_limit = 3

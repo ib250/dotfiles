@@ -63,6 +63,7 @@
   set hidden
   if has('gui_running')
     set guioptions-=T
+    colorscheme desert
     set guifont=dweep\ Medium\ Semi-Condensed\ 9
     set lines=60 columns=108 linespace=0
   endif

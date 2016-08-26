@@ -9,11 +9,14 @@ pmp() {
 	# some caps
 	ans="$(($1+$2))"
 	case $3 in
-		-top ) [ ${ans} -lt 26 ] && ans=26 || {
-				[ ${ans} -gt 150 ] && ans=150
+		-top ) [ ${ans} -lt 20 ] && ans=20 || {
+				[ ${ans} -gt 200 ] && ans=200
 				} ;;
-		* ) [ ${ans} -lt 4 ] && ans=4 || {
-				[ ${ans} -gt 150 ] && ans=150
+		-bottom ) [ ${ans} -lt 0 ] && ans=0 || {
+				[ ${ans} -gt 200 ] && ans=200
+				} ;;
+		* ) [ ${ans} -lt 0 ] && ans=0 || {
+				[ ${ans} -gt 300 ] && ans=300
 				} ;;
 	esac
 	# result
@@ -27,6 +30,6 @@ right_padding_curr="$(BSPCDF right_padding)"
 bottom_padding_curr="$(BSPCDF bottom_padding)"
 
 BSPCDF top_padding $(pmp ${top_padding_curr} $1 -top)
-BSPCDF bottom_padding $(pmp ${bottom_padding_curr} $1)
+BSPCDF bottom_padding $(pmp ${bottom_padding_curr} $1 -bottom)
 BSPCDF right_padding $(pmp ${right_padding_curr} $1)
 BSPCDF left_padding $(pmp ${left_padding_curr} $1)
