@@ -1,0 +1,59 @@
+#!/bin/bash
+
+usage() {
+	echo "
+	to apply a scheme:
+	makexuse apply <colorname>
+	to list all available schemes:
+	makexuse list
+	"
+}
+
+listcolours() {
+	tree -C -L 1 $HOME/.GitDots/crayolo $HOME/.termcolors/ib250
+}
+
+usethisone() {
+	source $HOME/.bash_aliases
+
+	# where are they?
+	dir=$HOME/.termcolors
+
+	# remove the old one
+	[ -e "${dir}/xuse" ] && rm ${dir}/xuse
+
+	# copy target
+	cat "$1" > ${dir}/xuse
+
+	# transparancy
+	sed -e "s/define /define a/g; s/ #/ #D9/g;" $1 >> ${dir}/xuse
+
+	# reload Xresources
+	xrdb $HOME/.Xresources
+	export barBG=$(xrdb -query | grep "*background" | awk '{print $NF}')
+	export barFG=$(xrdb -query | grep "*foreground" | awk '{print $NF}')
+
+	# chang bsp stuff
+	bspc config normal_border_color ${barBG}
+	bspc config focused_border_color ${barFG}
+	bspc config active_border_color ${barFG}
+
+	# update zathurarc
+	updatezathurarc
+
+	# reset wall
+	blend tile
+	
+	# reload bar
+	lemtoggle.sh stop && lemtoggle.sh start &
+
+	# update gtk with oomox cli
+	sh /opt/oomox/change_color.sh xresources
+}
+
+# begin
+case ${1} in
+	l|list ) listcolours ;;
+	a|apply ) usethisone $HOME/.termcolors/${2} ;;
+	* ) usage ;;
+esac

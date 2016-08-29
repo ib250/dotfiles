@@ -136,10 +136,10 @@ function blend() {
 			comptontoggle stop &> /dev/null
 			xsetroot -bitmap "/home/ismail/.local/share/tiles/xbms/ammannTilingEdges.xbm"  -bg "${thebg}" -fg "${thefg}"
 			;;
-		#tile+ ) 
-			#comptontoggle start
-			#hsetroot -tile "/home/ismail/.local/share/tiles/pngs/tile.png"  -bg "${thebg}" -fg "${thefg}"
-			#;;
+		notile )
+			comptontoggle stop &> /dev/null
+			hsetroot -solid  "${thebg}"
+			;;
 		* )
 			comptontoggle start &>/dev/null
 			hsetroot -solid  "${thebg}"
@@ -175,4 +175,11 @@ function mylualatex() {
 }
 function mybibtex() {
 	bibtex "$(find . -name "*.aux")"
+}
+function updatezathurarc() {
+	currbg=$(cat $HOME/.config/zathura/zathurarc.base | grep -i "default-bg" | awk '{print $NF}' | uniq)
+	currfg=$(cat $HOME/.config/zathura/zathurarc.base | grep -i "default-fg" | awk '{print $NF}' | uniq)
+	[ -e "$HOME/.config/zathura/zathurarc" ] && rm $HOME/.config/zathura/zathurarc
+	cat $HOME/.config/zathura/zathurarc.base | sed -e "s/"${currbg}"/\""${barBG}"\"/;
+																 s/"${currfg}"/\""${barFG}"\"/" > $HOME/.config/zathura/zathurarc
 }

@@ -19,69 +19,14 @@ lineheight = 2
 padding_right = 1
 module_margin_left = 1
 module_margin_right = 1
-;module_margin_left = 1
-;module_margin_right = 1
 
 font-0 = dweep:size=9;0
 font-1 = MaterialIcons:size=10;0
 font-2 = FontAwesome:size=7;-2
 
 modules-center = bspwm
-modules-left = mpd xtitle
-modules-right = volume battery wireless-network wired-network date
-;modules-right = battery wireless-network wired-network date
-
-[bar/bottom]
-monitor = eDP1
-bottom = true
-width = 100%
-height = 18
-
-background = ${bar/top.background}
-foreground = ${bar/top.foreground}
-linecolor = ${bar/top.background}
-
-spacing = 2
-lineheight = 2
-padding_right = 4
-module_margin_left = 0
-module_margin_right = 6
-
-font-0 = NotoSans-Regular:size=8;0
-font-1 = Unifont:size=6;0
-font-2 = FontAwesome:size=8;0
-font-3 = MaterialIcons:size=10;0
-
 modules-left = mpd
-;modules-center = cpu memory
-modules-right = diskspace cpu memory
-
-[bar/external_bottom]
-;inherit_from = bar/bottom
-
-monitor = HDMI-1
-bottom = true
-width = ${bar/bottom.width}
-height = ${bar/bottom.height}
-
-background = ${bar/bottom.background}
-foreground = ${bar/bottom.foreground}
-linecolor = ${bar/bottom.linecolor}
-
-spacing = ${bar/bottom.spacing}
-lineheight = ${bar/bottom.lineheight}
-padding_right = ${bar/bottom.padding_right}
-module_margin_left = ${bar/bottom.module_margin_left}
-module_margin_right = ${bar/bottom.module_margin_right}
-
-font-0 = ${bar/bottom.font-0}
-font-1 = ${bar/bottom.font-1}
-font-2 = ${bar/bottom.font-2}
-font-3 = ${bar/bottom.font-3}
-font-4 = ${bar/bottom.font-4}
-
-modules-left = bspwm
-modules-right = clock
+modules-right = xtitle seps volume battery wireless-network wired-network date
 
 [module/backlight]
 type = internal/backlight
@@ -108,6 +53,10 @@ bar-empty-foreground = #44
 type = custom/script
 exec = xtitle -s -t 50
 tail = true
+
+[module/seps]
+type = custom/script
+exec = echo "|"
 
 [module/diskspace]
 type = custom/script
