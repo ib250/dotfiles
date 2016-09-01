@@ -15,13 +15,20 @@ function lemstop() {
 export barBG=$(xrdb -query | grep "*background" | awk '{print $NF}')
 export barFG=$(xrdb -query | grep "*foreground" | awk '{print $NF}')
 
+source $HOME/.bash_aliases
+
 # zero input case just toggle start stop
 case $1 in
-	start ) ( pidof lemonbar ) || lemstart ;;
+	start )
+		( pidof lemonbar ) || lemstart
+		;;
 	stop ) ( pidof lemonbar ) && lemstop ;;
-	toggle ) ( pidof lemonbar ) && lemstop || lemstart ;;
+	toggle )
+		( pidof lemonbar ) && lemstop || lemstart
+		;;
 	reload|* )
 		( pidof lemonbar ) && lemstop
 		lemstart
 		;;
 esac
+lowerbar 2> /dev/null

@@ -3,14 +3,25 @@
 usage() {
 	echo "
 	to apply a scheme:
-	makexuse apply <colorname>
+		makexuse a|apply <colorname>
+
 	to list all available schemes:
-	makexuse list
+		makexuse l|list
+
+	update links to colours
+		makexuse r|relink
 	"
 }
 
 listcolours() {
-	tree -C -L 1 $HOME/.GitDots/crayolo $HOME/.termcolors/ib250
+	tree -C -L 1 $HOME/.GitDots/crayolo $HOME/.GitDots/ib250
+}
+
+relinkcolours() {
+	{
+		cp -sf $HOME/.GitDots/crayolo/* $HOME/.termcolors/.
+		cp -sf $HOME/.GitDots/ib250/* $HOME/.termcolors/.
+	} 2> /dev/null
 }
 
 usethisone() {
@@ -49,11 +60,16 @@ usethisone() {
 
 	# update gtk with oomox cli
 	sh /opt/oomox/change_color.sh xresources
+	sh /opt/oomox/change_color.sh xresources2
+
+	# lower bar
+	lowerbar
 }
 
 # begin
 case ${1} in
 	l|list ) listcolours ;;
+	r|relink ) relinkcolours ;;
 	a|apply ) usethisone $HOME/.termcolors/${2} ;;
 	* ) usage ;;
 esac

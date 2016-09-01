@@ -9,12 +9,11 @@ initDesktop() {
 		export _JAVA_AWT_WM_NONREPARENTING=1
 	# Colours and sound
 		xrdb .Xresources # load xcolors
+		export QT_STYPE_OVERRIDE='gtk2'
 		# bars::
 		export barBG=$(xrdb -query | grep "*background" | awk '{print $NF}')
 		export barFG=$(xrdb -query | grep "*foreground" | awk '{print $NF}')
 		pulseaudio --start
-	# mpd
-		mpd &
 	# Mittigate vims stupidity with external clipboard
 		keratin -d
 	# speed up key repeat rate
@@ -32,12 +31,7 @@ initBspwm() {
 	# java fix
 		wmname LG3D
 	# wall
-		case $1 in
-			blend ) blend ;;
-			blur ) comptontoggle start && fehwall blur ;;
-			sharp ) comptontoggle start && fehwall sharp ;;
-			* ) blend tile ;;
-		esac
+		blend tile
 	# wm
 		exec bspwm -c $HOME/.config/bspwm/bspwmrc
 }

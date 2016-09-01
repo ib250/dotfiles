@@ -2,16 +2,17 @@
 alias climatlab='matlab -nosplash -nodesktop'
 alias r='ranger'
 alias c='clear'
-alias l='ls -lAs --color=always'
-alias ll='ls -l --color=always'
+alias l='exa --long --all'
+#alias l='ls -lAs --color=always'
+alias ll='exa --long'
 alias rmi='rm -iv'
 alias cpi='cp -iv'
 alias mvi='mv -iv'
 alias sxconf='cat ~/.config/sxhkd/sxhkdrc \n'
 alias xsxconf='vim $HOME/.config/sxhkd/sxhkdrc.bsp-git'
 alias ofoam='source /opt/OpenFOAM/OpenFOAM-3.0.1/etc/bashrc'
-alias treee='tree -C'
-alias trls='tree -C -L 1'
+alias tls='exa -T -L 1'
+#alias trls='tree -C -L 1'
 alias wpag='sudo wpa_gui'
 alias quickLuaTex='latexmk -lualatex'
 alias quickPdfTex='latexmk -pdf'
@@ -23,6 +24,7 @@ alias unixporn='rtv -s /r/unixporn'
 alias wslurn='slurm -i wlp8s0'
 alias fucktheskullofitunes='mpd && ncmpcpp'
 alias whichxuse='head -n2 $HOME/.termcolors/xuse && colorblocks'
+alias DF='df -h /'
 
 # some possibly useless functions
 function ddboot() {
@@ -134,7 +136,7 @@ function blend() {
 	case $1 in
 		tile ) 
 			comptontoggle stop &> /dev/null
-			xsetroot -bitmap "/home/ismail/.local/share/tiles/xbms/ammannTilingEdges.xbm"  -bg "${thebg}" -fg "${thefg}"
+			xsetroot -bitmap "$HOME/.local/share/tiles/xbms/starhex.xbm"  -bg "${thebg}" -fg "${thefg}"
 			;;
 		notile )
 			comptontoggle stop &> /dev/null
@@ -182,4 +184,9 @@ function updatezathurarc() {
 	[ -e "$HOME/.config/zathura/zathurarc" ] && rm $HOME/.config/zathura/zathurarc
 	cat $HOME/.config/zathura/zathurarc.base | sed -e "s/"${currbg}"/\""${barBG}"\"/;
 																 s/"${currfg}"/\""${barFG}"\"/" > $HOME/.config/zathura/zathurarc
+}
+function lowerbar() {
+	barid="$(xdo id -a mybar)"
+	rootid="$(xdo id -a eDP1)"
+	xdo below -t "${rootid}" "${barid}"
 }

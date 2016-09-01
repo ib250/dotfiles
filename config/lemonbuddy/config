@@ -28,6 +28,8 @@ modules-center = bspwm
 modules-left = mpd
 modules-right = xtitle seps volume battery wireless-network wired-network date
 
+wm_name = mybar
+
 [module/backlight]
 type = internal/backlight
 card = intel_backlight
@@ -56,7 +58,7 @@ tail = true
 
 [module/seps]
 type = custom/script
-exec = echo "|"
+exec = echo "<<"
 
 [module/diskspace]
 type = custom/script

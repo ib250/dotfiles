@@ -38,7 +38,8 @@ super + space
     rofi -terminal urxvtc -font 'dweep 8' -modi "window,run,ssh,files:rofi-file-browser.sh" -show run
 
 super + shift + space
-	lemtoggle.sh toggle
+	lemtoggle.sh reload \
+	lowerbar
 
 #super + shift + Tab
     #rofi -terminal urxvtc -font 'Terminal 9' -show window

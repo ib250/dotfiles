@@ -3,8 +3,8 @@
 
 #define bg #282828
 #define fg #E0E0E0
-#define blk #675E5B
-#define bblk #2B3A47
+#define blk #373737
+#define bblk #505050
 #define mag #9E9FA4
 #define red #994F4D
 #define grn #6C7D3F
