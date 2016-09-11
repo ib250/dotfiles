@@ -26,11 +26,11 @@
 	#}
 		bspc rule -a "qutebrowser" desktop="^2" follow=on
 		bspc rule -a "Firefox" desktop="^2" follow=on
-		bspc rule -a "Zathura" desktop="^3" state=tiled follow=on
+		bspc rule -a "Zathura" state=tiled follow=on
 		bspc rule -a "URxvtQuake" state=floating sticky=on
 		bspc rule -a "URxvtRun" state=floating sticky=on
 		bspc rule -a "Butter" desktop="^1" follow=on
 	#}
 	# bar & rectify padding
-	mpd && lemtoggle.sh start && squeezewin.sh 2
+	lemtoggle.sh start && squeezewin.sh 2
 } 2> $HOME/.local/bspwm.log 

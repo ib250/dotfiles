@@ -360,6 +360,10 @@
   autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
   " calender view
   nnoremap <leader>CC :Calendar -view=year<CR>
+  " sorry :(
+  nnoremap <leader>p :emenu Edit.Paste<CR>
 "}
-" sorry :(
-nnoremap <leader>p :emenu Edit.Paste<CR>
+"sxhkd {
+  source $HOME/.vim/bundle/vim-sxhkdrc/syntax/sxhkdrc.vim
+  source $HOME/.vim/bundle/vim-sxhkdrc/ftdetect/sxhkdrc.vim
+"}

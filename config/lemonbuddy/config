@@ -30,39 +30,58 @@ modules-right = xtitle seps volume battery wireless-network wired-network date
 
 wm_name = mybar
 
+[bar/hwnotif]
+monitor = ${env:mymonitor}
+width = 100%
+height = 18
+offset_x = 12
+offset_y = 5
+background = ${env:barFG}
+foreground = ${env:barBG}
+linecolor = ${bar/hwnotif.background}
+spacing = 1
+lineheight = 2
+padding_right = 1
+module_margin_left = 1
+module_margin_right = 1
+font-0 = dweep:size=9;0
+font-1 = MaterialIcons:size=10;0
+font-2 = FontAwesome:size=7;-2
+modules-center = hwpopinfo
+wm_name = hwnotifbar
+
+[module/hwpopinfo]
+type = custom/script
+exec = hwpopinfo
+tail = true
+
 [module/backlight]
 type = internal/backlight
 card = intel_backlight
 format = <ramp> <bar>
-
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-
 bar-width = 10
 bar-format = %{A4:backlight_percentage%__p5:}%{A5:backlight_percentage%__m5:}%{+u}%{+o}%fill%%{-u}%{-o}%indicator%%{+u}%{+o}%empty%%{-u}%{-o}%{A}%{A}
 bar-indicator = |
-bar-indicator-foreground = #ff
+;bar-indicator-foreground = #ff
 bar-indicator-font = 3
 bar-fill = █
-bar-fill-foreground = #bb
+;bar-fill-foreground = #bb
 bar-fill-font = 3
 bar-empty = █
 bar-empty-font = 3
-bar-empty-foreground = #44
+;bar-empty-foreground = #44
 
 [module/xtitle]
 type = custom/script
-exec = xtitle -s -t 50
+exec = xtitle -s -t 30
 tail = true
 
 [module/seps]
 type = custom/script
 exec = echo "<<"
-
-[module/diskspace]
-type = custom/script
-exec = diskspace
 
 [module/battery]
 type = internal/battery
@@ -101,16 +120,8 @@ animation-charging-framerate_ms = 750
 
 [module/bspwm]
 type = internal/bspwm
-
-;workspace_icon-0 = term;
-;workspace_icon-1 = web;
-;workspace_icon-2 = code;
-;workspace_icon-3 = music;
-;workspace_icon-4 = external;
 workspace_icon-default = 
-;  
 format = <label-state> <label-mode>
-
 label-dimmed-underline = ${BAR.background}
 
 label-active = %icon%
@@ -127,7 +138,6 @@ label-occupied-padding = 2
 label-urgent = %icon%
 label-urgent-foreground = #000000
 label-urgent-background = #bd2c40
-;label-urgent-underline = #9b0a20
 label-urgent-font = 4
 label-urgent-padding = 2
 
@@ -137,43 +147,25 @@ label-empty-font = 4
 label-empty-padding = 2
 
 label-monocle = 
-;label-monocle-underline = ${module/bspwm.label-active-underline}
-;label-monocle-background = #33ffffff
-;label-monocle-foreground = #33ffffff
 label-monocle-padding = 2
 
 label-locked = 
 label-locked-foreground = #bd2c40
-;label-locked-underline = ${module/bspwm.label-monocle-underline}
 label-locked-padding = ${module/bspwm.label-monocle-padding}
 
 label-sticky = 
 label-sticky-foreground = #fba922
-;label-sticky-underline = ${module/bspwm.label-monocle-underline}
 label-sticky-padding = ${module/bspwm.label-monocle-padding}
 
 label-private = 
 label-private-foreground = #bd2c40
-;label-private-underline = ${module/bspwm.label-monocle-underline}
 label-private-padding = ${module/bspwm.label-monocle-padding}
-
-[module/bspwm-tmp]
-type = internal/bspwm
-format = <label-state>
-
-label-active = 
-label-active-padding = 1
-label-occupied = 
-label-occupied-padding = 1
-label-empty = 
-label-empty-padding = 1
 
 [module/cpu]
 type = internal/cpu
 interval = 0.5
 format =   <label> <ramp-load_per_core>
 label = CPU [ %percentage% ]
-
 ramp-load_per_core-0 = ▁
 ramp-load_per_core-0-font = 2
 ramp-load_per_core-0-foreground = #aaff77
@@ -208,7 +200,6 @@ date_detailed = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{
 type = internal/memory
 format = <label> <bar-used>
 label = RAM [ %gb_used% ]
-
 bar-used-width = 15
 bar-used-foreground-0 = #aaff77
 bar-used-foreground-1 = #aaff77
@@ -227,7 +218,6 @@ bar-used-empty-foreground = #444444
 type = internal/mpd
 clickable_progress = true
 format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
-
 icon-play = 
 icon-pause = 
 icon-stop = 
@@ -256,18 +246,15 @@ type = internal/network
 interface = wlp8s0
 interval = 3.0
 ping_interval = 10
-
 format-connected = <ramp-signal> <label-connected>
 label-connected = %essid%
 label-disconnected =    not connected
 label-disconnected-foreground = #66
-
 ramp-signal-0 = 
 ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-
 animation-packetloss-0 = 
 animation-packetloss-0-foreground = #ffa64c
 animation-packetloss-1 = 
@@ -278,21 +265,15 @@ animation-packetloss-framerate_ms = 500
 type = internal/network
 interface = wlp8s0
 interval = 3.0
-;   %{T3}%local_ip%%{T-}
 
 label-connected = 
 label-disconnected-foreground = #66
 
 [module/volume]
 type = internal/volume
-;speaker_mixer = Speaker
-;headphone_mixer = Headphone
-;headphone_control_numid = 9
-
 format-volume = <ramp-volume> <label-volume>
 label-muted =   muted
 label-muted-foreground = #66
-;
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 

@@ -35,13 +35,9 @@ URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.clipboard.autocopy: true
 URxvt.tabbed.new-button:    no
 xft.dpi: 109
-! TERMINAL COLOURS
-URxvt.background: bg
-! ! Geometry !!
 URxvt*geometry: 65x20
-! }}}
-! ! rofi Color theme
-! ------------------------------------------------------------------------------
+
+! ! rofi Color theme {{{
 ! Use extended color scheme
  rofi.color-enabled:                  true
 ! Color scheme for normal row
@@ -51,15 +47,15 @@ URxvt*geometry: 65x20
 ! Color scheme for active row
  rofi.color-active:                   argb:00000000, fg, argb:00000000,  awht, bg
 ! Color scheme window bg: :boarder
- rofi.color-window: abg, fg
+ rofi.color-window: bg, fg
 ! Separator style (none, dash, solid)
  rofi.separator-style:                solid
+! }}}
 
-! Colors
+! XColors {{{
 *background:   bg
 *foreground:   fg
 *cursorColor:  ylw
-
 *color0:      blk
 *color8:      bblk
 *color1:      red
@@ -76,9 +72,4 @@ URxvt*geometry: 65x20
 *color14:     cyn
 *color7:      wht
 *color15:     wht
-!! gvim stuff--------------------
-!!{{{
-gvim.background: wht
-gvim.foreground: blk
-!! dzen2---
-dzen2.font: xft:Terminal:pixelsize=12:antialias=true
+! }}}

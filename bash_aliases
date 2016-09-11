@@ -9,9 +9,9 @@ alias rmi='rm -iv'
 alias cpi='cp -iv'
 alias mvi='mv -iv'
 alias sxconf='cat ~/.config/sxhkd/sxhkdrc \n'
-alias xsxconf='vim $HOME/.config/sxhkd/sxhkdrc.bsp-git'
+alias xsxconf='vim $HOME/.config/sxhkd/sxhkdrc'
 alias ofoam='source /opt/OpenFOAM/OpenFOAM-3.0.1/etc/bashrc'
-alias tls='exa -T -L 1'
+alias trls='exa -T -L 1'
 #alias trls='tree -C -L 1'
 alias wpag='sudo wpa_gui'
 alias quickLuaTex='latexmk -lualatex'
@@ -143,7 +143,7 @@ function blend() {
 			hsetroot -solid  "${thebg}"
 			;;
 		* )
-			comptontoggle start &>/dev/null
+			comptontoggle start &
 			hsetroot -solid  "${thebg}"
 			;;
 	esac
@@ -159,7 +159,7 @@ function makecolors() {
 		echo "! $@ \n! bg fg blk bblk wht red grn ylw blu mag cyn"
 	}
 	makeandlink() {
-		pathprefix="/home/ismail/.termcolors/ib250/${1}"
+		pathprefix="/home/ismail/.GitDots/ib250/${1}"
 		printheader ${1} > ${pathprefix}
 		ln -s ${pathprefix} $HOME/.termcolors/.
 	}
@@ -189,4 +189,10 @@ function lowerbar() {
 	barid="$(xdo id -a mybar)"
 	rootid="$(xdo id -a eDP1)"
 	xdo below -t "${rootid}" "${barid}"
+}
+function showcolours() {
+	case ${inputfile} in
+		png|jpg|jpeg ) colors -n ${numbers:-9} ${inputfile} ;;
+		* ) cat ${inputfile} | awk '{print $NF}' | grep "#" ;;
+	esac | hex2col
 }

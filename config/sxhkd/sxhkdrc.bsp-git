@@ -27,25 +27,25 @@ super + Return
 super + {shift,alt} + Return
 	gurxvt.sh {pullup,center}
 
-super + i
-	 qutebrowser 2> /dev/null
-
-super + I
-	 firefox 2> /dev/null
-
 # program launcher
 super + space
-    rofi -terminal urxvtc -font 'dweep 8' -modi "window,run,ssh,files:rofi-file-browser.sh" -show run
+    rofi -terminal urxvtc -font 'dweep 8' -modi "window,run,ssh,drun,windowcd,combi,files:rofi-file-browser.sh" -show run
 
 super + shift + space
-	lemtoggle.sh reload \
-	lowerbar
+	gmrun
 
-#super + shift + Tab
-    #rofi -terminal urxvtc -font 'Terminal 9' -show window
 
-super + S
-	keratin -fn "dweep" -nf $barFG -nb $barBG -sf $barBG -sb $barFG
+#	lemtoggle.sh reload \
+#	source $HOME/.bash_aliases \
+#	lowerbar
+
+super + {S,I,i}
+	{keratin -fn "fixed" -nf $barFG -nb $barBG -sf $barBG -sb $barFG,\
+	mpdmenu -l :: -l 10 -fn "fixed" -nb $barBG -nf $barFG -sb $barFG -sf $barBG,\
+	mpdmenu -p :: -l 10 -fn "fixed" -nb $barBG -nf $barFG -sb $barFG -sf $barBG}
+
+super + n
+	hwpopit.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -205,3 +205,5 @@ super + button{1-3}
 # end move/resize
 super + @button{1-3}
 	bspc pointer -u
+
+# vim:ft=conf
