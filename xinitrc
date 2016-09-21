@@ -4,38 +4,39 @@ source ~/.bashrc
 source ~/.bash_aliases
 initDesktop() {
 	# Keyboard:
-		setxkbmap -model pc105 -layout gb
+	setxkbmap -model pc105 -layout gb
 	# Alleged java fix:
-		export _JAVA_AWT_WM_NONREPARENTING=1
+	export _JAVA_AWT_WM_NONREPARENTING=1
 	# Colours and sound
-		xrdb .Xresources # load xcolors
-		export QT_STYLE_OVERRIDE='gtk2'
-		# bars::
-		export barBG=$(xrdb -query | grep "*background" | awk '{print $NF}')
-		export barFG=$(xrdb -query | grep "*foreground" | awk '{print $NF}')
-		pulseaudio --start
-		mpd &
+	xrdb .Xresources # load xcolors
+	export QT_STYLE_OVERRIDE='gtk2'
+	# bars::
+	export barBG=$(xrdb -query | grep "*background" | awk '{print $NF}')
+	export barFG=$(xrdb -query | grep "*foreground" | awk '{print $NF}')
+	pulseaudio --start
+	mpd &
 	# Mittigate vims stupidity with external clipboard
-		keratin -d
+	keratin -d
 	# speed up key repeat rate
-		xset r rate 370 150
+	xset r rate 370 150
 	# urxvt daemon
-		urxvtd -q -f -o & 
+	urxvtd -q -f -o & 
 	# hide mouse
-		unclutter -idle 1 &
+	unclutter -idle 1 &
 }
 initBspwm() {
 	# remove text file if it exists
-		[ -e $HOME/.local/sxhkd.log ] && rm $HOME/.local/sxhkd.log
+	[ -e $HOME/.local/sxhkd.log ] && rm $HOME/.local/sxhkd.log
 	# keybinding stuff
-		sxhkd &2> $HOME/.local/sxhkd.log
+	sxhkd &2> $HOME/.local/sxhkd.log
 	# java fix
-		wmname LG3D
+	wmname LG3D
 	# wall
-		blend tile
+	blend tile
 	# wm
-		exec bspwm -c $HOME/.config/bspwm/bspwmrc
+	exec bspwm -c $HOME/.config/bspwm/bspwmrc
 }
+
 # start bspwm
 initDesktop
-initBspwm "$@"
+initBspwm

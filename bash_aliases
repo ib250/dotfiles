@@ -2,9 +2,8 @@
 alias climatlab='matlab -nosplash -nodesktop'
 alias r='ranger'
 alias c='clear'
-alias l='exa --long --all'
-#alias l='ls -lAs --color=always'
-alias ll='exa --long'
+alias l='exa --long --all --git'
+alias ll='exa --long --git'
 alias rmi='rm -iv'
 alias cpi='cp -iv'
 alias mvi='mv -iv'
@@ -12,7 +11,7 @@ alias sxconf='cat ~/.config/sxhkd/sxhkdrc \n'
 alias xsxconf='vim $HOME/.config/sxhkd/sxhkdrc'
 alias ofoam='source /opt/OpenFOAM/OpenFOAM-3.0.1/etc/bashrc'
 alias trls='exa -T -L 1'
-#alias trls='tree -C -L 1'
+alias tree='exa -T'
 alias wpag='sudo wpa_gui'
 alias quickLuaTex='latexmk -lualatex'
 alias quickPdfTex='latexmk -pdf'
@@ -136,7 +135,7 @@ function blend() {
 	case $1 in
 		tile ) 
 			comptontoggle stop &> /dev/null
-			xsetroot -bitmap "$HOME/.local/share/tiles/xbms/starhex.xbm"  -bg "${thebg}" -fg "${thefg}"
+			xsetroot -bitmap "$HOME/.local/share/tiles/xbms/ammannTiling.xbm"  -bg "${thebg}" -fg "${thefg}"
 			;;
 		notile )
 			comptontoggle stop &> /dev/null
@@ -192,7 +191,7 @@ function lowerbar() {
 }
 function showcolours() {
 	case ${inputfile} in
-		png|jpg|jpeg ) colors -n ${numbers:-9} ${inputfile} ;;
+		*png|jpg|jpeg ) colors -n ${numbers:-9} ${inputfile} ;;
 		* ) cat ${inputfile} | awk '{print $NF}' | grep "#" ;;
 	esac | hex2col
 }

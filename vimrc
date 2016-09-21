@@ -42,17 +42,18 @@
   Plugin 'itchyny/calendar.vim'
   Plugin 'OmniCppComplete'
   Plugin 'yuratomo/w3m.vim'
+  Plugin 'fortran.vim'
   call vundle#end()            " required
   filetype plugin indent on    " required
 "}
 " General settings {
   " set color term to 256 colors
   set t_Co=256
-  let &t_AB="\e[48;5;%dm"
-  let &t_AF="\e[38;5;%dm"
+  "let &t_AB="\e[48;5;%dm"
+  "let &t_AF="\e[38;5;%dm"
   syntax on
-  colorscheme default
   set background=dark
+  colorscheme desert
   " working directory always where the active buffer is located
   set autochdir
   augroup vimrc_set_working_dir
@@ -217,7 +218,6 @@
   set foldcolumn=4                " add a fold column
   set foldmethod=indent           " detect triple-{ style fold markers
   set foldnestmax=10      "deepest fold is 10 levels
-  "set nofoldenable        "dont fold by default
   set foldlevel=0
   set foldlevelstart=99
 "}
@@ -249,24 +249,26 @@
    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
    exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
   endfunction
-  call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-  call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-  call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-  call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-  call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-  call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-  call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-  call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#151515')
-  call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
-  call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
-  call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
-  call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
+  " some colours for NerdTree {
+    call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+    call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+    call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+    call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+    call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+    call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+    call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+    call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#151515')
+    call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
+    call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
+    call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
+    call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
+  "}
 "}
 " Tagbar plugin tweaks {
   nmap <leader>tg :TagbarToggle<CR>
@@ -362,8 +364,4 @@
   nnoremap <leader>CC :Calendar -view=year<CR>
   " sorry :(
   nnoremap <leader>p :emenu Edit.Paste<CR>
-"}
-"sxhkd {
-  source $HOME/.vim/bundle/vim-sxhkdrc/syntax/sxhkdrc.vim
-  source $HOME/.vim/bundle/vim-sxhkdrc/ftdetect/sxhkdrc.vim
 "}
