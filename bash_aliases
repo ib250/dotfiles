@@ -12,7 +12,6 @@ alias xsxconf='vim $HOME/.config/sxhkd/sxhkdrc'
 alias ofoam='source /opt/OpenFOAM/OpenFOAM-3.0.1/etc/bashrc'
 alias trls='exa -T -L 1'
 alias tree='exa -T'
-alias wpag='sudo wpa_gui'
 alias quickLuaTex='latexmk -lualatex'
 alias quickPdfTex='latexmk -pdf'
 alias alsi='alsi -n'
@@ -91,7 +90,7 @@ function somechars() {
 # dump a list of packages
 function pacmanEmList() {
 	packages="$HOME/packageList"
-	[ -e "${packages}" ] && rm ${packages}
+	[ -e "${packages}" ] && rm -f ${packages}
 	pacman --query > ${packages}
 }
 # simple function to connect and disconnect HDMI
@@ -132,14 +131,23 @@ function comptontoggle() {
 function blend() {
 	thebg="$(xrdb -query | grep "*background" | awk '{print $NF}')"
 	thefg="$(xrdb -query | grep "*color0" | awk '{print $NF}')"
+	wht="$(xrdb -query | grep "*color7" | awk '{print $NF}')"
 	case $1 in
 		tile ) 
 			comptontoggle stop &> /dev/null
-			xsetroot -bitmap "$HOME/.local/share/tiles/xbms/ammannTiling.xbm"  -bg "${thebg}" -fg "${thefg}"
+			xsetroot -bitmap "$HOME/.local/share/tiles/xbms/ammannTilingEdges.xbm"  -bg "${thebg}" -fg "${thefg}"
+			;;
+		tile-light ) 
+			comptontoggle stop &> /dev/null
+			xsetroot -bitmap "$HOME/.local/share/tiles/xbms/ammannTilingEdges.xbm"  -bg "${wht}" -fg "${thebg}"
 			;;
 		notile )
 			comptontoggle stop &> /dev/null
 			hsetroot -solid  "${thebg}"
+			;;
+		notile-light )
+			comptontoggle stop &> /dev/null
+			hsetroot -solid  "${wht}"
 			;;
 		* )
 			comptontoggle start &

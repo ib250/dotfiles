@@ -14,7 +14,7 @@ initDesktop() {
 	export barBG=$(xrdb -query | grep "*background" | awk '{print $NF}')
 	export barFG=$(xrdb -query | grep "*foreground" | awk '{print $NF}')
 	pulseaudio --start
-	mpd &
+	#mpd &
 	# Mittigate vims stupidity with external clipboard
 	keratin -d
 	# speed up key repeat rate

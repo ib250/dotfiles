@@ -30,4 +30,4 @@ case $1 in
 		;;
 esac
 
-## todo: find a way to make this togglable
+## TODO: find a way to make this togglable

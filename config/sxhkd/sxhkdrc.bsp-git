@@ -4,15 +4,15 @@
 
 # lights
 {F2,F3}
- xbacklight -{dec,inc} 1 
+	xbacklight -{dec,inc} 1 
 
 # volume mute/unmute
 F6
- amixer set Master toggle
+	amixer set Master toggle
 
 # volume toggles
 {F7,F8}
- amixer set Master 1000{-,+} unmute
+	amixer set Master 1000{-,+} unmute
 
 
 # kill panel
@@ -29,7 +29,9 @@ super + {shift,alt} + Return
 
 # program launcher
 super + space
-    rofi -terminal urxvtc -font 'dweep 8' -modi "window,run,ssh,drun,windowcd,combi,files:rofi-file-browser.sh" -show run
+    rofi -terminal urxvtc -font 'dweep 8' \
+	 -modi "window,run,ssh,drun,windowcd,files:rofi-file-browser.sh" \
+	 -show run
 
 super + shift + space
 	gmrun

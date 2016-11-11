@@ -42,16 +42,14 @@
   Plugin 'itchyny/calendar.vim'
   Plugin 'OmniCppComplete'
   Plugin 'yuratomo/w3m.vim'
-  Plugin 'fortran.vim'
+  Plugin 'scala.vim'
   call vundle#end()            " required
   filetype plugin indent on    " required
 "}
 " General settings {
   " set color term to 256 colors
-  set t_Co=256
-  "let &t_AB="\e[48;5;%dm"
-  "let &t_AF="\e[38;5;%dm"
-  syntax on
+  "set t_Co=256
+  syntax enable
   set background=dark
   colorscheme desert
   " working directory always where the active buffer is located
@@ -161,8 +159,8 @@
   set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
   " ctrlp extensions:
   " CtrlP for filetype
-  "let g:ctrlp_extensions = ['filetype']
-  " silent! nnoremap <unique> <silent> <Leader>f :CtrlPFiletype<CR>
+  let g:ctrlp_extensions = ['filetype']
+   "silent! nnoremap <unique> <silent> <Leader>f :CtrlPFiletype<CR>
   " Faster searching if 'ag' present
   " The Silver Searcher
   if executable('ag')
@@ -230,7 +228,7 @@
   " File types to setup space indentation:
   augroup vimrc_file_type_indentation
     au!
-    autocmd FileType python setlocal shiftwidth=2 tabstop=2 expandtab
+    "autocmd FileType python setlocal shiftwidth=2 tabstop=2 expandtab
     autocmd FileType vim setlocal shiftwidth=2 tabstop=2 expandtab
     autocmd FileType matlab setlocal shiftwidth=4 tabstop=2 expandtab
   augroup end
@@ -360,6 +358,7 @@
   autocmd FileType c set omnifunc=ccomplete#Complete
   au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
   autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
+  autocmd BufRead,BufNewFile *.scala set filetype=scala
   " calender view
   nnoremap <leader>CC :Calendar -view=year<CR>
   " sorry :(
