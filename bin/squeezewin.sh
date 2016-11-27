@@ -29,7 +29,16 @@ left_padding_curr="$(BSPCDF left_padding)"
 right_padding_curr="$(BSPCDF right_padding)"
 bottom_padding_curr="$(BSPCDF bottom_padding)"
 
-BSPCDF top_padding $(pmp ${top_padding_curr} $1 -top)
-BSPCDF bottom_padding $(pmp ${bottom_padding_curr} $1 -bottom)
+case "$2" in
+	+bar|+b )
+		  BSPCDF top_padding $(pmp ${top_padding_curr} $1 -top)
+		  BSPCDF bottom_padding $(pmp ${bottom_padding_curr} $1 -bottom)
+		  ;;
+	* ) 
+		  BSPCDF top_padding $(pmp ${top_padding_curr} $1 -bottom)
+		  BSPCDF bottom_padding $(pmp ${bottom_padding_curr} $1 -bottom)
+		  ;;
+esac
+
 BSPCDF right_padding $(pmp ${right_padding_curr} $1)
 BSPCDF left_padding $(pmp ${left_padding_curr} $1)

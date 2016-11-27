@@ -32,7 +32,7 @@ URxvt.iso14755: true
 !URxvt.iso14755_52: true
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-URxvt.clipboard.autocopy: true
+!URxvt.clipboard.autocopy: true
 URxvt.tabbed.new-button:    no
 xft.dpi: 109
 URxvt*geometry: 65x20

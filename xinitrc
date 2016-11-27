@@ -3,19 +3,18 @@
 source ~/.bashrc
 source ~/.bash_aliases
 initDesktop() {
-	# Keyboard:
-	setxkbmap -model pc105 -layout gb
-	# Alleged java fix:
-	export _JAVA_AWT_WM_NONREPARENTING=1
-	# Colours and sound
+	setxkbmap -model pc105 -layout gb # Keyboard:
+	export _JAVA_AWT_WM_NONREPARENTING=1 # Alleged java fix:
+	# Colours and sound {{{1 #
 	xrdb .Xresources # load xcolors
 	export QT_STYLE_OVERRIDE='gtk2'
 	# bars::
 	export barBG=$(xrdb -query | grep "*background" | awk '{print $NF}')
 	export barFG=$(xrdb -query | grep "*foreground" | awk '{print $NF}')
-	pulseaudio --start
+	pulseaudio --start #...
+	# 1}}} #
 	#mpd &
-	# Mittigate vims stupidity with external clipboard
+	# Mittigate vims stupidity with external clipboard manager
 	keratin -d
 	# speed up key repeat rate
 	xset r rate 370 150
@@ -25,18 +24,13 @@ initDesktop() {
 	unclutter -idle 1 &
 }
 initBspwm() {
-	# remove text file if it exists
-	[ -e $HOME/.local/sxhkd.log ] && rm $HOME/.local/sxhkd.log
-	# keybinding stuff
-	sxhkd &2> $HOME/.local/sxhkd.log
-	# java fix
-	wmname LG3D
-	# wall
-	blend tile
-	# wm
-	exec bspwm -c $HOME/.config/bspwm/bspwmrc
+	[ -e $HOME/.local/sxhkd.log ] && rm $HOME/.local/sxhkd.log 
+	sxhkd &2> $HOME/.local/sxhkd.log # keybinding stuff
+	wmname LG3D # java fix
+	blend tile # wall
+	exec bspwm -c $HOME/.config/bspwm/bspwmrc # wm
 }
 
-# start bspwm
 initDesktop
+# start bspwm
 initBspwm
