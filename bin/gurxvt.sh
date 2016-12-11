@@ -2,6 +2,7 @@
 
 gurxvt() {
 	# set things up
+		#borderColor=$(xrdb -query | grep "*color9" | awk '{print $NF}')
 		urxvtc -name $1
 		PFW="$(xdo id -n ${1})"
 		bspc node ${PFW} -t floating -l above -g sticky
@@ -11,7 +12,7 @@ gurxvt() {
 case $1 in
 	pullup ) 
 			classname="URxvtQuake"
-			gurxvt "${classname}" 0 && {
+			gurxvt "${classname}" 1 && {
 			PFW="$(xdo id -n ${classname})"
 			# snap
 			snap.sh j ${PFW} "+" && wtf ${PFW} & TPID2=$!
@@ -21,7 +22,7 @@ case $1 in
 		;;
 	center )
 			classname="URxvtRun"
-			gurxvt "${classname}" 5 && {
+			gurxvt "${classname}" 1 && {
 			PFW="$(xdo id -n ${classname})"
 			wtf ${PFW} & TPID2=$!
 			# wait for the process to complete

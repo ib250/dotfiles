@@ -36,6 +36,8 @@ super + space
 super + shift + space
 	gmrun
 
+#super + shift + bracket{left,right}
+	#bspc monitor {-r,-a 1}
 
 #	lemtoggle.sh reload \
 #	source $HOME/.bash_aliases \
@@ -46,8 +48,11 @@ super + {S,I,i}
 	mpdmenu -l :: -l 10 -fn "fixed" -nb $barBG -nf $barFG -sb $barFG -sf $barBG,\
 	mpdmenu -p :: -l 10 -fn "fixed" -nb $barBG -nf $barFG -sb $barFG -sf $barBG}
 
+super + N
+	pgrep polybar && { pkill polybar } || { polybar example }
+
 super + n
-	hwpopit.sh
+	hwpopit.sh -sys
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -126,7 +131,8 @@ super + {comma,period}
 
 # focus the next/previous desktop
 super + bracket{left,right}
-	bspc desktop -f {prev,next}
+	bspc desktop -f {prev,next} && \
+	hwpopit.sh -ws
 
 # focus the last node/desktop
 super + {grave,Tab}
@@ -139,8 +145,16 @@ super + {grave,Tab}
 #	bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+#super + {_,shift + }{1-9,0}
+	#bspc {desktop -f,node -d} '^{1-9,10}'
+	#
+
+super + {1-9,0}
+	bspc desktop -f '^{1-9,10}' && \
+	hwpopit.sh -ws
+
+super + shift + {1-9,0}
+	bspc node -d '^{1-9,10}'
 
 #
 # preselect
@@ -189,8 +203,12 @@ super + {a,d}
 	wrs {2 2,-2 -2} $(pfw)
 
 # change gap sizes
-super {_,shift} g
-	squeezewin.sh {-10,+10}
+super + G
+	pgrep polybar && squeezewin.sh +10 +bar || squeezewin.sh +10
+
+
+super + g
+	pgrep polybar && squeezewin.sh -10 +bar || squeezewin.sh -10
 
 #
 # pointer focus/move/resize

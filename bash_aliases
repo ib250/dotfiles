@@ -77,12 +77,14 @@ colorblocks() {
     done
     echo -e "$rst\n"
 }
+
 # got too used to v alias for vim
-vimw() {
-	[[ $# -lt 1 ]] && vim 2> /dev/null || \
-		vimpager $@
-}
-alias v='vimw'
+#vimw() {
+	#[[ $# -lt 1 ]] && vim 2> /dev/null || \
+		#vimpager $@
+#}
+#alias v='vimw'
+
 # something to see how fonts behave on term
 somechars() {
 	echo "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG\nthe quick brown fox jumps over the lazy dog\n1234567890\n!\"£$%^&*():{}@~<>?,.¬\`|\\\?/=-+_\n"
@@ -108,7 +110,6 @@ connectHDMI() {
 			echo "Invalid input use + to connect and - to disconnect"
 			;;
 	esac
-	blend tile
 	#feh  --image-bg black --bg-center $HOME/.wall.png
 }
 # dump the blurred wall
@@ -197,7 +198,7 @@ lowerbar() {
 	rootid="$(xdo id -a eDP1)"
 	xdo below -t "${rootid}" "${barid}"
 }
-function showcolours() {
+showcolours() {
 	case ${inputfile} in
 		*png|jpg|jpeg ) colors -n ${numbers:-9} ${inputfile} ;;
 		* ) cat ${inputfile} | awk '{print $NF}' | grep "#" ;;

@@ -18,20 +18,20 @@
 	bspc config active_border_color $barFG
 	bspc config presel_feedback_color $barFG
 	# monitors {
-		#bspc monitor eDP1 -d 'I' 'II' 'III' 'IV' 'V'
+	bspc monitor eDP1 -d 'I' 'II' 'III' 'IV' 'V'
 	#}
 	# some rules:{
 		#Gimp{ single window mode so i can tile
 		#bspc rule -a "Gimp" desktop="^4"
 		#bspc config -d "^4" pointer_follows_focus false
 		#}
-		#bspc rule -a "qutebrowser" desktop="^2" follow=on
-		#bspc rule -a "Firefox" desktop="^2" follow=on
-		#bspc rule -a "Zathura" state=tiled follow=on
-		#bspc rule -a "URxvtQuake" state=floating sticky=on
-		#bspc rule -a "URxvtRun" state=floating sticky=on
-		#bspc rule -a "Butter" desktop="^1" follow=on
+		bspc rule -a "qutebrowser" desktop="^2" follow=on
+		bspc rule -a "Firefox" desktop="^2" follow=on
+		bspc rule -a "Zathura" state=tiled follow=on
+		bspc rule -a "URxvtQuake" state=floating sticky=on
+		bspc rule -a "URxvtRun" state=floating sticky=on
+		bspc rule -a "Butter" desktop="^1" follow=on
 	#}
 	# bar & rectify padding
-	squeezewin.sh 2
+	squeezewin.sh 30
 } 2> $HOME/.local/bspwm.log 

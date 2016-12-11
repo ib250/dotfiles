@@ -27,7 +27,7 @@ initBspwm() {
 	[ -e $HOME/.local/sxhkd.log ] && rm $HOME/.local/sxhkd.log 
 	sxhkd &2> $HOME/.local/sxhkd.log # keybinding stuff
 	wmname LG3D # java fix
-	blend tile # wall
+	blend # wall
 	exec bspwm -c $HOME/.config/bspwm/bspwmrc # wm
 }
 
