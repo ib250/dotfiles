@@ -303,7 +303,7 @@
   " always show tab bar:
   set showtabline=2
   " clipboard madness:
-  set clipboard+=unnamed
+  set clipboard=unnamed
   " Menu stuff
   set wildmenu
   set wildmode=longest,full

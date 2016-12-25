@@ -10,7 +10,7 @@ URxvt*cursorBlink:       false
 URxvt*urgentOnBell:       true
 ! Extensions
 URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
-URxvt.url-select.launcher:  qutebrowser
+URxvt.url-select.launcher:  dwb
 URxvt.url-select.underline: true
 !! The font debarcle
 *font: xft:dweep:pixelsize=9,style=regular:antialias=False:outline=False
@@ -26,13 +26,12 @@ URxvt.internalBorder:   10
 !xpdf settings
 xpdf*.background: #d3d3d3
 xpdf*.foreground: #000000
-! Enables copy/paste with Ctrl-Shift-C/V
 ! Plus other perl stuff
-URxvt.iso14755: true
+!URxvt.iso14755: true
 !URxvt.iso14755_52: true
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-!URxvt.clipboard.autocopy: true
+!URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+!URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.clipboard.autocopy: true
 URxvt.tabbed.new-button:    no
 xft.dpi: 109
 URxvt*geometry: 65x20

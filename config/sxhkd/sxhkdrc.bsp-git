@@ -30,10 +30,15 @@ super + {shift,alt} + Return
 # program launcher
 super + space
     rofi -terminal urxvtc -font 'dweep 8' \
-	 -modi "window,run,ssh,drun,windowcd,files:rofi-file-browser.sh" \
+	 -modi "window,run,windowcd" \
 	 -show run
 
 super + shift + space
+    rofi -terminal urxvtc -font 'dweep 8' \
+	 -modi "files:rofi-file-browser.sh" \
+	 -show files
+
+super + alt + space
 	gmrun
 
 #super + shift + bracket{left,right}
@@ -64,7 +69,7 @@ super + Escape
 
 # quit bspwm normally
 super + alt + Escape
-	lemtoggle.sh stop 2> /dev/null; bspc quit 2> /dev/null
+	pgrep polybar && pkill polybar; bspc quit 2> /dev/null
 
 # close and kill
 super + {_,shift + }w
@@ -150,8 +155,7 @@ super + {grave,Tab}
 	#
 
 super + {1-9,0}
-	bspc desktop -f '^{1-9,10}' && \
-	hwpopit.sh -ws
+	bspc desktop -f '^{1-9,10}' && hwpopit.sh -ws
 
 super + shift + {1-9,0}
 	bspc node -d '^{1-9,10}'

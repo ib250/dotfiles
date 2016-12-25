@@ -2,6 +2,7 @@
 [ -e $HOME/.local/bspwm.log ] && rm $HOME/.local/bspwm.log 
 {
 	source ~/.bash_aliases
+	polybar example &
 	# Gaps and such:
 	bspc config border_width	 2
 	bspc config window_gap		8
@@ -33,5 +34,5 @@
 		bspc rule -a "Butter" desktop="^1" follow=on
 	#}
 	# bar & rectify padding
-	squeezewin.sh 30
+	squeezewin.sh +0 +bar
 } 2> $HOME/.local/bspwm.log 

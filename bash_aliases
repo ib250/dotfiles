@@ -152,7 +152,8 @@ blend() {
 			;;
 		* )
 			comptontoggle start &
-			hsetroot -solid  "${thebg}"
+			hsetroot -tile "$HOME/Pictures/arabtile-frarab-gray.jpg"
+			#hsetroot -solid  "${thebg}"
 			;;
 	esac
 }
