@@ -43,6 +43,8 @@
   Plugin 'OmniCppComplete'
   Plugin 'yuratomo/w3m.vim'
   Plugin 'scala.vim'
+  Plugin 'vimwiki'
+  "Plugin 'EasyDigraph.vim'
   call vundle#end()            " required
   filetype plugin indent on    " required
 "}
@@ -68,9 +70,9 @@
   endif
   set number
   set autoindent
-  set noexpandtab
-  set tabstop=3
-  set shiftwidth=3
+  set expandtab
+  set tabstop=2
+  set shiftwidth=2
   set lazyredraw          " redraw only when we need to.
   set relativenumber
   autocmd InsertEnter * :set norelativenumber
@@ -114,7 +116,7 @@
   let g:UltiSnipsExpandTrigger = '<tab>'
   let g:UltiSnipsJumpForwardTrigger = '<tab>'
   let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-  let g:ycm_server_python_interpreter = '/usr/bin/python3.5'
+  let g:ycm_server_python_interpreter = '/usr/bin/python'
 "}
 " YCM settings {
   let g:clang_library_path = "/usr/lib64/"
@@ -228,8 +230,11 @@
   " File types to setup space indentation:
   augroup vimrc_file_type_indentation
     au!
-    "autocmd FileType python setlocal shiftwidth=2 tabstop=2 expandtab
     autocmd FileType vim setlocal shiftwidth=2 tabstop=2 expandtab
+    autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround
+    autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 expandtab
+    autocmd FileType c setlocal shiftwidth=4 tabstop=4 expandtab
+    autocmd FileType haskell setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround
     autocmd FileType matlab setlocal shiftwidth=4 tabstop=2 expandtab
   augroup end
 "}

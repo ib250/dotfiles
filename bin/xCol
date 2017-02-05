@@ -96,7 +96,7 @@ case ${1} in
 		${nowall} || {
 			nowall=true
 			# reset wall
-			blend tile
+			blend
 		}
 
 	;;

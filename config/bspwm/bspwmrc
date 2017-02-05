@@ -26,7 +26,7 @@
 		#bspc rule -a "Gimp" desktop="^4"
 		#bspc config -d "^4" pointer_follows_focus false
 		#}
-		bspc rule -a "qutebrowser" desktop="^2" follow=on
+		#bspc rule -a "qutebrowser" desktop="^2" follow=on
 		bspc rule -a "Firefox" desktop="^2" follow=on
 		bspc rule -a "Zathura" state=tiled follow=on
 		bspc rule -a "URxvtQuake" state=floating sticky=on

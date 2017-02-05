@@ -4,7 +4,7 @@
 
 # lights
 {F2,F3}
-	xbacklight -{dec,inc} 1 
+	xbacklight -{dec,inc} 10
 
 # volume mute/unmute
 F6

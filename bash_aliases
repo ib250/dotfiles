@@ -77,17 +77,14 @@ colorblocks() {
     done
     echo -e "$rst\n"
 }
-
-# got too used to v alias for vim
-#vimw() {
-	#[[ $# -lt 1 ]] && vim 2> /dev/null || \
-		#vimpager $@
-#}
-#alias v='vimw'
-
 # something to see how fonts behave on term
 somechars() {
-	echo "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG\nthe quick brown fox jumps over the lazy dog\n1234567890\n!\"£$%^&*():{}@~<>?,.¬\`|\\\?/=-+_\n"
+	echo "
+THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
+the quick brown fox jumps over the lazy dog
+1234567890
+!\"£$%^&*():{}@~<>?,.¬\`|\\\?/=-+_
+	"
 }
 # dump a list of packages
 pacmanEmList() {
@@ -110,7 +107,7 @@ connectHDMI() {
 			echo "Invalid input use + to connect and - to disconnect"
 			;;
 	esac
-	#feh  --image-bg black --bg-center $HOME/.wall.png
+	blend
 }
 # dump the blurred wall
 walldump() {
@@ -124,38 +121,10 @@ walldump() {
 }
 comptontoggle() {
 		case $1 in
-			start ) ( pgrep compton ) || compton &> /dev/null ;;
-			stop ) ( pgrep compton ) && pkill compton &> /dev/null ;;
-			* ) ( pgrep compton ) && pkill compton || compton &> /dev/null ;;
-		esac
-}
-blend() {
-	thebg="$(xrdb -query | grep "*background" | awk '{print $NF}')"
-	thefg="$(xrdb -query | grep "*color0" | awk '{print $NF}')"
-	wht="$(xrdb -query | grep "*color7" | awk '{print $NF}')"
-	case $1 in
-		tile ) 
-			comptontoggle stop &> /dev/null
-			xsetroot -bitmap "$HOME/.local/share/tiles/xbms/starhex.xbm"  -bg "${thebg}" -fg "${thefg}"
-			;;
-		tile-light ) 
-			comptontoggle stop &> /dev/null
-			xsetroot -bitmap "$HOME/.local/share/tiles/xbms/starhex.xbm"  -bg "${wht}" -fg "${thebg}"
-			;;
-		notile )
-			comptontoggle stop &> /dev/null
-			hsetroot -solid  "${thebg}"
-			;;
-		notile-light )
-			comptontoggle stop &> /dev/null
-			hsetroot -solid  "${wht}"
-			;;
-		* )
-			comptontoggle start &
-			hsetroot -tile "$HOME/Pictures/arabtile-frarab-gray.jpg"
-			#hsetroot -solid  "${thebg}"
-			;;
-	esac
+			start ) pgrep compton || compton;;
+			stop ) pgrep compton && pkill compton;;
+			* ) pgrep compton && pkill compton || compton;;
+		esac &> /dev/null
 }
 startmatlab() {
 	# found that some java annoyances persist without this
