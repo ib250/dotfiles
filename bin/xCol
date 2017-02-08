@@ -72,32 +72,34 @@ done
 # begin
 case ${1} in
 	l|list ) listcolours ;;
-	r|relink ) relinkcolours ;;
+	r|relink ) echo "
+    Relinking colours
+    " && relinkcolours ;;
 	a|apply )
 		usethisone $HOME/.termcolors/${2}
 
-		${nobar} || {
+		#${nobar} || {
 			# reload bar
-			lemtoggle.sh stop && lemtoggle.sh start &
-			# lower bar
-			lowerbar
-			# fix padding
-			squeezewin.sh 0
-		}
+			#lemtoggle.sh stop && lemtoggle.sh start &
+			## lower bar
+			#lowerbar
+			## fix padding
+			#squeezewin.sh 0
+		#}
 
-		${nogtk} || {
+		#${nogtk} || {
 			# update gtk with oomox cli
-			sh /opt/oomox/change_color.sh \
-			"$(cat "$HOME/.config/gtk-3.0/settings.ini" | \
-			grep "gtk-theme-name" | \
-			awk -F \- '{print $NF}')"
-		}
+			#sh /opt/oomox/change_color.sh \
+			#"$(cat "$HOME/.config/gtk-3.0/settings.ini" | \
+			#grep "gtk-theme-name" | \
+			#awk -F \- '{print $NF}')"
+		#}
 
-		${nowall} || {
-			nowall=true
-			# reset wall
-			blend
-		}
+		#${nowall} || {
+			#nowall=true
+			## reset wall
+			#blend
+		#}
 
 	;;
 	* ) usage ;;

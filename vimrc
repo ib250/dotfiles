@@ -44,7 +44,6 @@
   Plugin 'yuratomo/w3m.vim'
   Plugin 'scala.vim'
   Plugin 'vimwiki'
-  "Plugin 'EasyDigraph.vim'
   call vundle#end()            " required
   filetype plugin indent on    " required
 "}

@@ -10,7 +10,7 @@ URxvt*cursorBlink:       false
 URxvt*urgentOnBell:       true
 ! Extensions
 URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
-URxvt.url-select.launcher:  dwb
+URxvt.url-select.launcher:  vimb
 URxvt.url-select.underline: true
 !! The font debarcle
 *font: xft:dweep:pixelsize=9,style=regular:antialias=False:outline=False
@@ -58,17 +58,17 @@ URxvt*geometry: 65x20
 *color0:      blk
 *color8:      bblk
 *color1:      red
-*color9:      red
+*color9:      bred
 *color2:      grn
-*color10:     grn
+*color10:     bgrn
 *color3:      ylw
-*color11:     ylw
+*color11:     bylw
 *color4:      blu
-*color12:     blu
+*color12:     bblu
 *color5:      mag
-*color13:     mag
+*color13:     bmag
 *color6:      cyn
-*color14:     cyn
+*color14:     bcyn
 *color7:      wht
-*color15:     wht
+*color15:     bwht
 ! }}}
