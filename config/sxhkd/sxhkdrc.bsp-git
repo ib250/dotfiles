@@ -29,12 +29,12 @@ super + {shift,alt} + Return
 
 # program launcher
 super + space
-    rofi -terminal urxvtc -font 'dweep 8' \
+    rofi -terminal urxvtc -font 'Misc Fixed 8' \
 	 -modi "window,run,windowcd" \
 	 -show run
 
 super + shift + space
-    rofi -terminal urxvtc -font 'dweep 8' \
+    rofi -terminal urxvtc -font 'Misc Fixed 8' \
 	 -modi "files:rofi-file-browser.sh" \
 	 -show files
 

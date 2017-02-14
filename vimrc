@@ -233,7 +233,8 @@
     autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround
     autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 expandtab
     autocmd FileType c setlocal shiftwidth=4 tabstop=4 expandtab
-    autocmd FileType haskell setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround
+    autocmd FileType haskell setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround \
+      nnoremap <leader>gh :!ghci %<CR>
     autocmd FileType matlab setlocal shiftwidth=4 tabstop=2 expandtab
   augroup end
 "}

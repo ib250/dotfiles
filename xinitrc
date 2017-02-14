@@ -23,7 +23,7 @@ initDesktop() {
 	urxvtd -q -f -o & 
 	# hide mouse
 	unclutter -idle 1 &
-	blend &> loging.log
+	blend tile &
 }
 initBspwm() {
 	[ -e $HOME/.local/sxhkd.log ] && rm $HOME/.local/sxhkd.log 

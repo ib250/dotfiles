@@ -13,10 +13,11 @@ URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
 URxvt.url-select.launcher:  vimb
 URxvt.url-select.underline: true
 !! The font debarcle
-*font: xft:dweep:pixelsize=9,style=regular:antialias=False:outline=False
+*font: xft:Misc Fixed:size=9,style=regular:antialias=False:outline=False
+pfont: xft:Misc Fixed:size=7
 URxvt.font: \
-    xft:dweep:size=9,style=regular:antialias=False:outline=False,\
-    xft:Terminal:pixelsize=10:antialias=True,\
+    xft:Misc Fixed:size=9,style=regular:antialias=False:outline=False,\
+    xft:Terminal:pixelsize=9:antialias=True,\
     xft:Inconsolata for Powerline:pixelsize=16,\
 	 xft:InconsolataForPowerline Nerd Font:pixelsize=16\
 URxvt.letterSpace: -2
@@ -37,6 +38,7 @@ xft.dpi: 109
 URxvt*geometry: 65x20
 
 ! ! rofi Color theme {{{
+rofi.font: xft:Misc Fixed:size=9,style=regular:antialias=False:outline=False
 ! Use extended color scheme
  rofi.color-enabled:                  true
 ! Color scheme for normal row
