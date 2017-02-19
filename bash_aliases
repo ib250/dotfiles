@@ -1,6 +1,6 @@
 # Aliases
 alias climatlab='matlab -nosplash -nodesktop'
-alias r='ranger'
+alias r='vifm .'
 alias c='clear'
 alias l='exa --long --all --git'
 alias ll='exa --long --git'

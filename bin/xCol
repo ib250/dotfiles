@@ -24,6 +24,13 @@ relinkcolours() {
 	} 2> /dev/null
 }
 
+togglebar() {
+  pgrep polybar && {
+    pkill polybar
+    polybar example
+  }
+}
+
 usethisone() {
 	source $HOME/.bash_aliases
 
@@ -53,21 +60,24 @@ usethisone() {
 	# update zathurarc
 	updatezathurarc
 
+  # blend
+  blend ${blend_options} &
 }
 
 # default options
 nowall=false
-nogtk=false
+#nogtk=false
 nobar=false
 
 for i in "$@"
 do
 	case "$i" in
 		*nobar* ) nobar=true; echo "NO BAR";;
-		*nogtk* ) nogtk=true; echo "NO GTK";;
+		#*nogtk* ) nogtk=true; echo "NO GTK";;
 		*nowall* ) nowall=true; echo "NO WALL";;
 	esac
 done
+
 
 # begin
 case ${1} in
@@ -76,31 +86,13 @@ case ${1} in
     Relinking colours
     " && relinkcolours ;;
 	a|apply )
+    # colours
 		usethisone $HOME/.termcolors/${2}
-
-		#${nobar} || {
-			# reload bar
-			#lemtoggle.sh stop && lemtoggle.sh start &
-			## lower bar
-			#lowerbar
-			## fix padding
-			#squeezewin.sh 0
-		#}
-
-		#${nogtk} || {
-			# update gtk with oomox cli
-			#sh /opt/oomox/change_color.sh \
-			#"$(cat "$HOME/.config/gtk-3.0/settings.ini" | \
-			#grep "gtk-theme-name" | \
-			#awk -F \- '{print $NF}')"
-		#}
-
-		#${nowall} || {
-			#nowall=true
-			## reset wall
-			#blend
-		#}
-
-	;;
+    # bar
+		${nobar} || togglebar &
+    # wall
+		${nowall} || {
+      blend ${blend_options} &
+		} ;;
 	* ) usage ;;
 esac

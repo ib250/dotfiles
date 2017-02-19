@@ -230,11 +230,15 @@
   augroup vimrc_file_type_indentation
     au!
     autocmd FileType vim setlocal shiftwidth=2 tabstop=2 expandtab
+
     autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround
+
     autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 expandtab
+
     autocmd FileType c setlocal shiftwidth=4 tabstop=4 expandtab
-    autocmd FileType haskell setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround \
-      nnoremap <leader>gh :!ghci %<CR>
+
+    autocmd FileType haskell setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround
+
     autocmd FileType matlab setlocal shiftwidth=4 tabstop=2 expandtab
   augroup end
 "}
@@ -368,4 +372,8 @@
   nnoremap <leader>CC :Calendar -view=year<CR>
   " sorry :(
   nnoremap <leader>p :emenu Edit.Paste<CR>
+
+  nnoremap <leader>rp :!python %<CR>
+  nnoremap <leader>ip :!python -i %<CR>
+  nnoremap <leader>gh :!ghci %<CR>
 "}
