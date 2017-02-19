@@ -1,7 +1,10 @@
 #!/bin/bash
+
 # For environment variables and such:
 source ~/.bashrc
 source ~/.bash_aliases
+
+# common configuration
 initDesktop() {
 	setxkbmap -model pc105 -layout gb # Keyboard:
 	export _JAVA_AWT_WM_NONREPARENTING=1 # Alleged java fix:
@@ -26,6 +29,8 @@ initDesktop() {
   # wall
 	blend ${blend_options} &
 }
+
+# bspwm specific stuff
 initBspwm() {
 	[ -e $HOME/.local/sxhkd.log ] && rm $HOME/.local/sxhkd.log 
 	sxhkd &2> $HOME/.local/sxhkd.log # keybinding stuff
