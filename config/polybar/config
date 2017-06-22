@@ -19,16 +19,15 @@
 	height = 18
 	offset-x = 5
 	offset-y = 5
-	;background = ${xrdb:color9}
-	background = ${xrdb:background}
-	foreground = ${xrdb:foreground}
+	background = ${xrdb:polybar.background}
+	foreground = ${xrdb:polybar.foreground}
 	;lineheight = 1
 	;linecolor = #555
 	;overline-size = 2
 	;overline-color = #f00
 	underline-size = 2
 	underline-color = #00f
-	border-bottom = 0
+	;border-bottom = 0
 	;border-bottom-color = #333
 	spacing = 1
 	padding-left = 2
@@ -51,7 +50,7 @@
 [module/xwindow]
 	type = internal/xwindow
 	label = %title%
-	label-maxlen = 30
+	label-maxlen = 50
 
 
 [module/filesystem]
@@ -67,12 +66,8 @@
 
 [module/bspwm]
 	type = internal/bspwm
-	ws-icon-default = #
+	ws-icon-default = _
 	format = <label-state> <label-mode>
-	label-active = %icon%
-	label-active-background = ${xrdb:background}
-	label-active-underline= ${xrdb:foreground}
-	label-active-padding = 2
 	label-occupied = %icon%
 	label-occupied-padding = 2
 	label-urgent = %icon%
@@ -81,11 +76,15 @@
 	label-empty = %icon%
 	label-empty-foreground = #55
 	label-empty-padding = 2
-	label-monocle = : [] :
-	label-floating = : {} :
-	label-locked = : LOCKED :
-	label-sticky = : STICKY :
-	label-private = : PRIVATE :
+	label-monocle = : || :
+	label-floating = : -> :
+	label-locked = : XX :
+	label-sticky = : => :
+	label-private = : @@ :
+  label-focused = ::
+	label-focused-background = ${bar/example.background}
+	label-focused-foreground = ${bar/example.foreground}
+	label-focused-padding = 2
 
 
 [module/i3]
@@ -135,7 +134,7 @@
 	bar-fill = ─
 	bar-fill-font = 1
 	;bar-fill-foreground = #9f78e1
-	bar-fill-foreground = ${xrdb:foreground}
+	bar-fill-foreground = ${bar/example.foreground}
 	bar-empty = ─
 	bar-empty-font = 1
 	bar-empty-foreground = #55
@@ -160,7 +159,7 @@
 	interface = wlp8s0
 	interval = 3.0
 	format-connected = <ramp-signal> <label-connected>
-	;format-connected-underline = ${xrdb:foreground}
+	;format-connected-underline = ${bar/example.foreground}
 	;format-disconnected-underline = ${self.format-connected-underline}
 	label-connected = %essid%
 	label-disconnected = %ifname% disconnected
@@ -261,9 +260,9 @@
 	type = custom/menu
 	label-open =  power
 	;label-open-foreground = #e60053
-	label-open-foreground = ${xrdb:foreground}
+	label-open-foreground = ${bar/example.foreground}
 	label-close =  cancel
-	label-close-foreground = ${xrdb:foreground}
+	label-close-foreground = ${bar/example.foreground}
 	label-separator = |
 	label-separator-foreground = #55
 	menu-0-0 = reboot

@@ -9,7 +9,6 @@ alias cpi='cp -iv'
 alias mvi='mv -iv'
 alias sxconf='cat ~/.config/sxhkd/sxhkdrc \n'
 alias xsxconf='vim $HOME/.config/sxhkd/sxhkdrc'
-alias ofoam='source /opt/OpenFOAM/OpenFOAM-3.0.1/etc/bashrc'
 alias trls='exa -T -L 1'
 alias tree='exa -T'
 alias quickLuaTex='latexmk -lualatex'
@@ -23,6 +22,7 @@ alias wslurn='slurm -i wlp8s0'
 alias fucktheskullofitunes='mpd && ncmpcpp'
 alias whichxuse='head -n2 $HOME/.termcolors/xuse && colorblocks'
 alias DF='df -h /'
+alias less='vimpager'
 
 # some possibly useless functions
 ddboot() {
@@ -169,8 +169,12 @@ lowerbar() {
 	xdo below -t "${rootid}" "${barid}"
 }
 showcolours() {
-	case ${inputfile} in
-		*png|jpg|jpeg ) colors -n ${numbers:-9} ${inputfile} ;;
-		* ) cat ${inputfile} | awk '{print $NF}' | grep "#" ;;
-	esac | hex2col
+  case ${1} in
+    *.png ) colors -n 18 ${1} ;;
+    * ) cat ${1} | awk '{print $NF}' | grep "#" ;;
+  esac | hex2col
+}
+ofoam() {
+  source /opt/OpenFOAM/OpenFOAM-3.0.1/etc/bashrc 
+  PATH=/opt/paraview/bin:${PATH}
 }

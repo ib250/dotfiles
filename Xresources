@@ -8,34 +8,40 @@ URxvt*secondaryScroll:    true
 URxvt*saveLines:         65535
 URxvt*cursorBlink:       false
 URxvt*urgentOnBell:       true
-! Extensions
-URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
-URxvt.url-select.launcher:  vimb
-URxvt.url-select.underline: true
+
+
 !! The font debarcle
-*font: xft:Misc Fixed:size=9,style=regular:antialias=False:outline=False
-pfont: xft:Misc Fixed:size=7
+*font: xft:Misc\ Fixed:size=9,style=regular:antialias=False:outline=False
+pfont: xft:Misc\ Fixed:size=7
 URxvt.font: \
-    xft:Misc Fixed:size=9,style=regular:antialias=False:outline=False,\
+    xft:Misc\ Fixed:size=9,style=regular:antialias=False:outline=False,\
     xft:Terminal:pixelsize=9:antialias=True,\
     xft:Inconsolata for Powerline:pixelsize=16,\
 	 xft:InconsolataForPowerline Nerd Font:pixelsize=16\
 URxvt.letterSpace: -2
 !URxvt.boldFont:
+
 ! terminal padding
 URxvt.internalBorder:   10
+
 !xpdf settings
 xpdf*.background: #d3d3d3
 xpdf*.foreground: #000000
-! Plus other perl stuff
+
+! Extensions
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  vimb
+URxvt.url-select.underline: true
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.clipboard.autocopy: true
+
 !URxvt.iso14755: true
 !URxvt.iso14755_52: true
-!URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-!URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-URxvt.clipboard.autocopy: true
-URxvt.tabbed.new-button:    no
+!URxvt.tabbed.new-button:    no
+
 xft.dpi: 109
-URxvt*geometry: 65x20
+URxvt*geometry: 80x20
 
 ! ! rofi Color theme {{{
 rofi.font: xft:Misc Fixed:size=9,style=regular:antialias=False:outline=False
@@ -74,3 +80,17 @@ rofi.font: xft:Misc Fixed:size=9,style=regular:antialias=False:outline=False
 *color7:      wht
 *color15:     bwht
 ! }}}
+
+! Polybar {{{
+polybar.background: bg
+polybar.foreground: fg
+!}}}
+
+/* st Config {{{1 */
+st.font:			-*-Misc Fixed-*-*-*-*-9-*-*-*-*-*-*-1
+st.bold_font:			0
+st.termname:			xterm-256color
+st.tabspaces:			8
+!st.chscale:			1.0
+!st.cwscale:			1.0
+/* }}} */

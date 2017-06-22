@@ -6,6 +6,7 @@
   filetype off                  " required
   " set the runtime path to include Vundle and initialize
   set rtp+=~/.vim/bundle/Vundle.vim
+  set rtp+=~/.vim/bundle/neco-ghc/autoload/neocomplcache/sources/ghc.vim
   call vundle#begin()
   Plugin 'gmarik/Vundle.vim'
   Plugin 'tpope/vim-surround'
@@ -44,12 +45,17 @@
   Plugin 'yuratomo/w3m.vim'
   Plugin 'scala.vim'
   Plugin 'vimwiki'
+  Plugin 'leafgarland/typescript-vim'
+  Plugin 'neco-ghc'
+  Plugin 'syntaxhaskell.vim'
+  Plugin 'SpellCheck'
+  Plugin 'rust-lang/rust.vim'
   call vundle#end()            " required
   filetype plugin indent on    " required
 "}
 " General settings {
   " set color term to 256 colors
-  "set t_Co=256
+  "set t_Co=155
   syntax enable
   set background=dark
   colorscheme desert
@@ -98,6 +104,10 @@
   let g:syntastic_aggregate_errors = 1
   let g:syntastic_always_populate_loc_list = 1
   let g:syntastic_vim_checkers = ['vint']
+  " cpp annoyances:
+  let g:syntastic_cpp_checkers = ['g++']
+  let g:syntastic_cpp_compiler = 'g++'
+  let g:syntastic_cpp_compiler_options = '-std=c++17 -stdlib=libc++'
 "}
 " YouCompleteMe (YCM) config {
   " strings will be ignored.
@@ -115,7 +125,7 @@
   let g:UltiSnipsExpandTrigger = '<tab>'
   let g:UltiSnipsJumpForwardTrigger = '<tab>'
   let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-  let g:ycm_server_python_interpreter = '/usr/bin/python'
+  let g:ycm_server_python_interpreter = '/usr/bin/python3.6'
 "}
 " YCM settings {
   let g:clang_library_path = "/usr/lib64/"
@@ -128,6 +138,9 @@
   let g:ycm_autoclose_preview_window_after_completion = 1
   let g:ycm_autoclose_preview_window_after_insertion = 1
   let g:ycm_use_ultisnips_completer = 1
+  let g:haskellmode_completion_ghc = 0
+  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+  let g:ycm_semantic_triggers = {'haskell' : ['.']}
 "}
 " vim-airline and vim-powerline settings {
   set laststatus=2
@@ -241,6 +254,8 @@
 
     autocmd FileType matlab setlocal shiftwidth=4 tabstop=2 expandtab
   augroup end
+  " rust
+  let g:rustfmt_autosave=1
 "}
 " NERDTree tabs {
   let g:nerdtree_tabs_open_on_gui_startup = 0
@@ -372,8 +387,11 @@
   nnoremap <leader>CC :Calendar -view=year<CR>
   " sorry :(
   nnoremap <leader>p :emenu Edit.Paste<CR>
-
   nnoremap <leader>rp :!python %<CR>
   nnoremap <leader>ip :!python -i %<CR>
   nnoremap <leader>gh :!ghci %<CR>
+  nnoremap <leader>rh :!runhaskell %<CR>
+  nnoremap <leader>Rh :!runhaskell % 
+  nnoremap <leader>hs :!cd $(pwd)/../ && cabal build && cabal repl<CR>
+  nnoremap <leader>Gh :!ghci -Wall %<CR>
 "}

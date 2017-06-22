@@ -28,7 +28,7 @@ togglebar() {
   pgrep polybar && {
     pkill polybar
     polybar example
-  }
+  } > /dev/null
 }
 
 usethisone() {
@@ -87,12 +87,14 @@ case ${1} in
     " && relinkcolours ;;
 	a|apply )
     # colours
-		usethisone $HOME/.termcolors/${2}
+    f=$HOME/.termcolors/${2}
+		usethisone ${f}
     # bar
 		${nobar} || togglebar &
     # wall
 		${nowall} || {
       blend ${blend_options} &
-		} ;;
+		}; showcolours ${f}
+    ;;
 	* ) usage ;;
 esac

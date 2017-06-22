@@ -54,7 +54,7 @@ super + {S,I,i}
 	mpdmenu -p :: -l 10 -fn "fixed" -nb $barBG -nf $barFG -sb $barFG -sf $barBG}
 
 super + N
-	pgrep polybar && { pkill polybar } || { polybar example }
+  bargaps.sh
 
 super + n
 	hwpopit.sh -sys
