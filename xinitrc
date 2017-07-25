@@ -28,6 +28,8 @@ initDesktop() {
 	unclutter -idle 1 &
   # wall
 	blend ${blend_options} &
+  # ldm:
+  ldm-start.sh
 }
 
 # bspwm specific stuff

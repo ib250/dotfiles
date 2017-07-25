@@ -32,3 +32,6 @@ PS1="${CME}$me${RST} \W ${CME}$ARROW${RST}\n"
 
 # some personal aliases
 source /home/ismail/.bash_aliases
+
+# stack completion
+eval "$(stack --bash-completion-script stack)"

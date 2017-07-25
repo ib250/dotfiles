@@ -388,10 +388,10 @@
   " sorry :(
   nnoremap <leader>p :emenu Edit.Paste<CR>
   nnoremap <leader>rp :!python %<CR>
-  nnoremap <leader>ip :!python -i %<CR>
-  nnoremap <leader>gh :!ghci %<CR>
-  nnoremap <leader>rh :!runhaskell %<CR>
-  nnoremap <leader>Rh :!runhaskell % 
-  nnoremap <leader>hs :!cd $(pwd)/../ && cabal build && cabal repl<CR>
-  nnoremap <leader>Gh :!ghci -Wall %<CR>
+  nnoremap <leader>ip :!ipython --matplotlib=qt4 -i %<CR>
+  nnoremap <leader>gh :!stack ghci %<CR>
+  nnoremap <leader>rh :!stack runhaskell %<CR>
+  nnoremap <leader>Rh :!stack runhaskell % 
+  nnoremap <leader>hs :!cd $(pwd)/../ && stack repl<CR>
+  nnoremap <leader>Gh :!stack ghci -Wall %<CR>
 "}

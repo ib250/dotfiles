@@ -29,6 +29,7 @@ ddboot() {
 	# reminder for bootable stuff
 	echo "dd bs=\$\3 if=\$\1 of=\$\2 status=progress && sync"
 }
+
 # not much use now that i've got locate but...
 doihave() {
 	# the 2 input case
@@ -36,6 +37,7 @@ doihave() {
 	# the one input case
 	[[ $# == 1 ]] && ls --all $(pwd) | grep -i $1
 }
+
 fehwall() {
 	comptontoggle start
 	case $1 in
@@ -51,6 +53,7 @@ fehwall() {
 	esac
 	feh --bg-fill "${usethisone}"
 }
+
 # set blurred wallpaper
 setblurredwall() {
 	# 2 input case
@@ -62,9 +65,11 @@ setblurredwall() {
 		hsetroot -fill $(tail -n 1 ~/.fehbg | awk '{print $NF}' | sed -e "s/'//g") -blur 20
 	}
 }
+
 showwall() {
 	feh $(tail -n 1 ~/.fehbg | awk '{print $NF}' | sed -e "s/'//g")
 }
+
 colorblocks() {
 	 NAMES="█████"
 	 #NAMES=">>"
@@ -77,6 +82,7 @@ colorblocks() {
     done
     echo -e "$rst\n"
 }
+
 # something to see how fonts behave on term
 somechars() {
 	echo "
@@ -86,12 +92,14 @@ the quick brown fox jumps over the lazy dog
 !\"£$%^&*():{}@~<>?,.¬\`|\\\?/=-+_
 	"
 }
+
 # dump a list of packages
 pacmanEmList() {
 	packages="$HOME/packageList"
 	[ -e "${packages}" ] && rm -f ${packages}
 	pacman --query > ${packages}
 }
+
 # simple function to connect and disconnect HDMI
 connectHDMI() {
 	case $1 in
@@ -109,6 +117,7 @@ connectHDMI() {
 	esac
 	blend
 }
+
 # dump the blurred wall
 walldump() {
 	# in and out
@@ -126,12 +135,14 @@ comptontoggle() {
 			* ) pgrep compton && pkill compton || compton;;
 		esac &> /dev/null
 }
+
 startmatlab() {
 	# found that some java annoyances persist without this
 	bspc desktop -l monocle && {
 	wmname LG3D && export _JAVA_AWT_WM_NONREPARENTING=1 && matlab "$@"
 	}
 }
+
 makecolors() {
 	printheader() {
 		echo "! $@ \n! bg fg blk bblk wht red grn ylw blu mag cyn"
@@ -147,15 +158,19 @@ makecolors() {
 		done
 	}
 }
+
 mypdflatex() {
 	pdflatex -syntex=1 -interaction=nonstopmode "$(find . -name "*.tex")"
 }
+
 mylualatex() {
 	lualatex -syntex=1 -interaction=nonstopmode "$(find . -name "*.tex")"
 }
+
 mybibtex() {
 	bibtex "$(find . -name "*.aux")"
 }
+
 updatezathurarc() {
 	currbg=$(cat $HOME/.config/zathura/zathurarc.base | grep -i "default-bg" | awk '{print $NF}' | uniq)
 	currfg=$(cat $HOME/.config/zathura/zathurarc.base | grep -i "default-fg" | awk '{print $NF}' | uniq)
@@ -163,18 +178,39 @@ updatezathurarc() {
 	cat $HOME/.config/zathura/zathurarc.base | sed -e "s/"${currbg}"/\""${barBG}"\"/;
 																 s/"${currfg}"/\""${barFG}"\"/" > $HOME/.config/zathura/zathurarc
 }
+
 lowerbar() {
 	barid="$(xdo id -a mybar)"
 	rootid="$(xdo id -a eDP1)"
 	xdo below -t "${rootid}" "${barid}"
 }
+
 showcolours() {
   case ${1} in
     *.png ) colors -n 18 ${1} ;;
     * ) cat ${1} | awk '{print $NF}' | grep "#" ;;
   esac | hex2col
 }
+
 ofoam() {
   source /opt/OpenFOAM/OpenFOAM-3.0.1/etc/bashrc 
   PATH=/opt/paraview/bin:${PATH}
+}
+
+movebooks() {
+  echo "Found: \n"
+  exa -l *.${1} && {
+    mv *.${1} $HOME/.Library
+  }
+}
+
+haskeleton() {
+  stack new haskeleton
+  rename haskeleton ${1} haskeleton
+  cat ${1}/haskeleton.cabal | \
+    sed -e "s/haskeleton/${1}/g" \
+    > ${1}/${1}.cabal
+  rm -rf ${1}/haskeleton.cabal
+  echo "\nGo on then..."
+  exa -T ${1}
 }
