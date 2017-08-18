@@ -29,12 +29,15 @@ xpdf*.background: #d3d3d3
 xpdf*.foreground: #000000
 
 ! Extensions
-URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select,resize-font
 URxvt.url-select.launcher:  vimb
 URxvt.url-select.underline: true
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.clipboard.autocopy: true
+
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 
 !URxvt.iso14755: true
 !URxvt.iso14755_52: true

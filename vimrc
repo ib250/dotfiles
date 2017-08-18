@@ -47,15 +47,15 @@
   Plugin 'vimwiki'
   Plugin 'leafgarland/typescript-vim'
   Plugin 'neco-ghc'
-  Plugin 'syntaxhaskell.vim'
   Plugin 'SpellCheck'
   Plugin 'rust-lang/rust.vim'
+  Plugin 'mxw/vim-jsx'
   call vundle#end()            " required
   filetype plugin indent on    " required
 "}
 " General settings {
   " set color term to 256 colors
-  "set t_Co=155
+  set t_Co=128
   syntax enable
   set background=dark
   colorscheme desert
@@ -108,6 +108,8 @@
   let g:syntastic_cpp_checkers = ['g++']
   let g:syntastic_cpp_compiler = 'g++'
   let g:syntastic_cpp_compiler_options = '-std=c++17 -stdlib=libc++'
+  let g:jsx_ext_required = 0
+  let g:synstastic_javascript_checkers = ['eslint']
 "}
 " YouCompleteMe (YCM) config {
   " strings will be ignored.
@@ -141,6 +143,11 @@
   let g:haskellmode_completion_ghc = 0
   autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
   let g:ycm_semantic_triggers = {'haskell' : ['.']}
+"}
+" Additional Haskell stuff for neco-ghc {
+  let g:necoghc_use_stack = 1
+  let g:necoghc_debug     = 1
+  let g:necoghc_enable_detailed_browse = 1
 "}
 " vim-airline and vim-powerline settings {
   set laststatus=2
@@ -389,7 +396,7 @@
   nnoremap <leader>p :emenu Edit.Paste<CR>
   nnoremap <leader>rp :!python %<CR>
   nnoremap <leader>ip :!ipython --matplotlib=qt4 -i %<CR>
-  nnoremap <leader>gh :!stack ghci %<CR>
+  nnoremap <leader>gh :!stack ghci <CR>
   nnoremap <leader>rh :!stack runhaskell %<CR>
   nnoremap <leader>Rh :!stack runhaskell % 
   nnoremap <leader>hs :!cd $(pwd)/../ && stack repl<CR>

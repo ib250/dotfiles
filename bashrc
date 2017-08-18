@@ -16,6 +16,8 @@ export PANEL_FIFO PANEL_HEIGHT PANEL_FONT PANEL_WM_NAME
 export PATH=$PATH:$HOME/.local/bin:$HOME/.config/bspwm/panel
 # add matlab
 export MATLAB_JAVA=/usr/lib/jvm/java-7-openjdk/jre
+# andorid studio
+export ANDROID_HOME=/opt/android-studio/plugins/android/lib
 #-------------------------------
 
 # Editor variable

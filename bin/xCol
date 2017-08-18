@@ -57,8 +57,8 @@ usethisone() {
 	bspc config active_border_color ${barFG}
 	bspc config presel_feedback_color ${barFG}
 
-	# update zathurarc
-	updatezathurarc
+	# update zathurarc and vimb
+  use_xuse.py
 
   # blend
   blend ${blend_options} &

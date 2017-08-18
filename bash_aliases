@@ -171,13 +171,13 @@ mybibtex() {
 	bibtex "$(find . -name "*.aux")"
 }
 
-updatezathurarc() {
-	currbg=$(cat $HOME/.config/zathura/zathurarc.base | grep -i "default-bg" | awk '{print $NF}' | uniq)
-	currfg=$(cat $HOME/.config/zathura/zathurarc.base | grep -i "default-fg" | awk '{print $NF}' | uniq)
-	[ -e "$HOME/.config/zathura/zathurarc" ] && rm $HOME/.config/zathura/zathurarc
-	cat $HOME/.config/zathura/zathurarc.base | sed -e "s/"${currbg}"/\""${barBG}"\"/;
-																 s/"${currfg}"/\""${barFG}"\"/" > $HOME/.config/zathura/zathurarc
-}
+#updatezathurarc() {
+	#currbg=$(cat $HOME/.config/zathura/zathurarc.base | grep -i "default-bg" | awk '{print $NF}' | uniq)
+	#currfg=$(cat $HOME/.config/zathura/zathurarc.base | grep -i "default-fg" | awk '{print $NF}' | uniq)
+	#[ -e "$HOME/.config/zathura/zathurarc" ] && rm $HOME/.config/zathura/zathurarc
+	#cat $HOME/.config/zathura/zathurarc.base | sed -e "s/"${currbg}"/\""${barBG}"\"/;
+																 #s/"${currfg}"/\""${barFG}"\"/" > $HOME/.config/zathura/zathurarc
+#}
 
 lowerbar() {
 	barid="$(xdo id -a mybar)"
