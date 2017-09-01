@@ -46,19 +46,50 @@
   Plugin 'scala.vim'
   Plugin 'vimwiki'
   Plugin 'leafgarland/typescript-vim'
-  Plugin 'neco-ghc'
+  Plugin 'eagletmt/neco-ghc'
   Plugin 'SpellCheck'
   Plugin 'rust-lang/rust.vim'
   Plugin 'mxw/vim-jsx'
+  Plugin 'dag/vim2hs'
+  Plugin 'Cobalt-Colour-scheme'
+  Plugin 'Python-mode-klen'
+  Plugin 'desert256.vim'
   call vundle#end()            " required
   filetype plugin indent on    " required
 "}
 " General settings {
   " set color term to 256 colors
-  set t_Co=128
+  set t_Co=256
   syntax enable
-  set background=dark
-  colorscheme desert
+
+  " solarized stuff
+  let g:solarized_termtrans = 1
+  let g:solarized_term_italics = 1
+  let g:solarized_visibility = 'high'
+  let g:solarized_statusline = 'low'
+
+  function! SetColor()
+    hi clear
+    set background=dark
+    if has('gui_running')
+      colorscheme solarized8_dark_high
+      set guioptions-=T
+      set guioptions-=L
+      set guioptions-=r
+      set guifont=Source\ Code\ Pro\ for\ Powerline\ 10
+      set lines=60 columns=108 linespace=0
+      " distraction free and not
+      nmap <leader>mm :set go=c<cr>
+      nmap <leader>MM :set go=agmit<cr>
+    else
+      colorscheme desert
+    endif
+  endfunction
+
+  call SetColor()
+  highlight Comment cterm=italic
+  highlight Todo cterm=bold
+
   " working directory always where the active buffer is located
   set autochdir
   augroup vimrc_set_working_dir
@@ -67,12 +98,6 @@
   augroup end
   set ruler
   set hidden
-  if has('gui_running')
-    set guioptions-=T
-    colorscheme desert
-    set guifont=dweep\ Medium\ Semi-Condensed\ 9
-    set lines=60 columns=108 linespace=0
-  endif
   set number
   set autoindent
   set expandtab
@@ -83,6 +108,7 @@
   autocmd InsertEnter * :set norelativenumber
   autocmd InsertLeave * :set relativenumber
   " Move a line of text using ALT+[jk]
+  let python_highlight_all = 1
   nmap <M-j> mz:m+<cr>`z
   nmap <M-k> mz:m-2<cr>`z
   vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
@@ -145,8 +171,8 @@
   let g:ycm_semantic_triggers = {'haskell' : ['.']}
 "}
 " Additional Haskell stuff for neco-ghc {
-  let g:necoghc_use_stack = 1
-  let g:necoghc_debug     = 1
+  let g:necoghc_use_stack = 0
+  let g:necoghc_debug     = 0
   let g:necoghc_enable_detailed_browse = 1
 "}
 " vim-airline and vim-powerline settings {
@@ -301,6 +327,12 @@
 "}
 " Tagbar plugin tweaks {
   nmap <leader>tg :TagbarToggle<CR>
+"}
+"{ vim2hs
+  autocmd FileType haskell vnoremap <buffer> <silent> <Leader>pf :PointFree!<CR>
+  let g:haskell_conceal = 0
+  let g:haskell_conceal_enumerations = 1
+  let g:haskell_conceal_comments = 1
 "}
 " Custom mappings and command shortcuts {
   " Fast saving

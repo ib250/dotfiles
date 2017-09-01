@@ -31,6 +31,13 @@ togglebar() {
   } > /dev/null
 }
 
+showcolours() {
+  case ${requested} in
+    *.png ) colors -n 18 ${1} ;;
+    * ) cat ${1} | awk '{print $NF}' | grep "#" ;;
+  esac | hex2col
+}
+
 usethisone() {
 	source $HOME/.bash_aliases
 
@@ -61,19 +68,17 @@ usethisone() {
   use_xuse.py
 
   # blend
-  blend ${blend_options} &
+  blend &
 }
 
 # default options
 nowall=false
-#nogtk=false
 nobar=false
 
 for i in "$@"
 do
 	case "$i" in
 		*nobar* ) nobar=true; echo "NO BAR";;
-		#*nogtk* ) nogtk=true; echo "NO GTK";;
 		*nowall* ) nowall=true; echo "NO WALL";;
 	esac
 done

@@ -185,12 +185,6 @@ lowerbar() {
 	xdo below -t "${rootid}" "${barid}"
 }
 
-showcolours() {
-  case ${1} in
-    *.png ) colors -n 18 ${1} ;;
-    * ) cat ${1} | awk '{print $NF}' | grep "#" ;;
-  esac | hex2col
-}
 
 ofoam() {
   source /opt/OpenFOAM/OpenFOAM-3.0.1/etc/bashrc 

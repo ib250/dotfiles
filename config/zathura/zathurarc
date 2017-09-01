@@ -4,7 +4,6 @@ set adjust-open "width"
 
 # One page per row by default
 set pages-per-row 1
-set font "Misc fixed 9"
 set recolor-reverse-video True
 set recolor-keephue
 set recolor
