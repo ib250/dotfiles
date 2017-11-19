@@ -23,6 +23,7 @@ alias fucktheskullofitunes='mpd && ncmpcpp'
 alias whichxuse='head -n2 $HOME/.termcolors/xuse && colorblocks'
 alias DF='df -h /'
 alias less='vimpager'
+alias cppref='vimb ${HOME}/Documents/cppreference/re'
 
 # some possibly useless functions
 ddboot() {
@@ -207,4 +208,20 @@ haskeleton() {
   rm -rf ${1}/haskeleton.cabal
   echo "\nGo on then..."
   exa -T ${1}
+}
+
+clean_src() {
+  rm $(find -depth -name ${1} | xargs) && {
+    exa -T .
+  } || {
+    echo "Nothing to clean"
+  }
+}
+
+show_imports() {
+  grep "import" $(find -depth -name ${1} | xargs)
+}
+
+interracts() {
+  jupyter notebook --NotebookApp.iopub_data_rate_limit=1e10 $*
 }

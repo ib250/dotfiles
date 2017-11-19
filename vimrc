@@ -144,6 +144,9 @@
   let g:ycm_register_as_syntastic_checker = 0
   let g:ycm_auto_trigger = 1
 "}
+" pymode settings {
+  let g:pymode_lint_checkers = ['flake8']
+"}
 " YouCompleteMe (YCM), and UltiSnips config {
   " make YCM compatible with UltiSnips (using supertab)
   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']

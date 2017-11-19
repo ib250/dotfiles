@@ -24,6 +24,9 @@ URxvt.letterSpace: -2
 ! terminal padding
 URxvt.internalBorder:   10
 
+! goemetry
+URxvt.geometry: 70x15
+
 !xpdf settings
 xpdf*.background: #d3d3d3
 xpdf*.foreground: #000000
